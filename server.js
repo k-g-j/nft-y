@@ -50,11 +50,22 @@ app.get( "/", ( req, res ) => {
 });
 
 app.get('/search', async (req, res) => {
+// q (required): The search string parameter
+// filter (required): What fields the search should match on. To look into the entire metadata set the value to global. To have a better response time you can look into a specific field like name. 
+// Available values: name; description; attributes; global; name, description; name, attributes; description, attributes; name, description, attributes
+// chain (optional): The blockchain to get data from. Default value Eth.
   const { data } = await axios.get('https://deep-index.moralis.io/api/v2/nft/search?chain=eth&format=decimal&q=pancake&filter=name', {
     headers:
       { 'x-api-key': 'jSR2NBKBbCWXYCZuH9MQtFAm4W0ONcSErMEElUA3VzCXa4UNvBSFbWfpwm4nBStp' }
   })
   let result = data.result
-  result = result.map(({metadata,...rest}) => ({...rest}));
-  res.send(result)
+  let imgUrls = []
+  for (const item of result) {
+    let metadata = JSON.parse(item['metadata'])
+    let imageUrl = metadata['image_url'];
+    imgUrls.push(imageUrl)
+  }
+  result = result.map(({ metadata, ...rest }) => ({ ...rest }));
+  imgUrls = imgUrls.filter(element => element)
+  res.json({ imgUrls: imgUrls, results: result })
 })

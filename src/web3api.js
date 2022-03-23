@@ -9,10 +9,10 @@ const moralisSecret = "WljAgxAnD5lZ9gtmwabpfqeVcYQVuXVJoKvU8TzxKQjXNe2TakC1afzPU
 
 await Moralis.start({ serverUrl, appId, moralisSecret });
 
-    //calling `getTokenPrice({address:"tokenAddress", chain:"chainID"})` from web3API
-    // const price = await Moralis.Web3API.token.getTokenPrice(
-    // {address: "0xe9e7cea3dedca5984780bafc599bd69add087d56", chain: "bsc"})
-    // console.log(price);
+    // calling `getTokenPrice({address:"tokenAddress", chain:"chainID"})` from web3API
+    const price = await Moralis.Web3API.token.getTokenPrice(
+    {address: "0xe9e7cea3dedca5984780bafc599bd69add087d56", chain: "bsc"})
+    console.log(price);
 }
 
 module.exports = web3API;
