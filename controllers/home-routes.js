@@ -1,15 +1,39 @@
 const router = require('express').Router();
 const Moralis = require('moralis/node')
+const { popularNFTs } = require('../src/collections')
 require('dotenv').config();
+const serverUrl = process.env.serverUrl
+const appId = process.env.appId
 
 
 router.get('/', (req, res) => {
   res.render('index')
 });
 
+router.get()
+
+router.get('/nft/popular', async (req, res) => {
+  // these should go into the database to seed 
+  res.json(popularNFTs)
+})
+
+router.get('/nft/collection/BoredApeYachtClub', async (req, res) => {
+  // example response for name: "Bored Ape Yacht Club" the route will be /nft/collection/:name
+  const options = popularNFTs.map(nft => nft.addrs)
+  await Moralis.start({ serverUrl, appId });
+  const NFTs = await Moralis.Web3API.token.getAllTokenIds({ address: options[0] });
+  let NFTcollection = NFTs.result
+  for (const item of NFTcollection) {
+    let metadata = JSON.parse(item['metadata'])
+    let image = metadata['image'] ? metadata['image'] : false
+    image_url = image.replace('ipfs://', '')
+    formated_url = `https://ipfs.io/ipfs/${image_url}`
+    item.formated_url = formated_url
+  }
+  res.json(NFTcollection)
+})
+
 router.post('/nft/search', async (req, res) => {
-  const serverUrl = 'https://dma5wmaeradr.usemoralis.com:2053/server'
-  const appId = 'cMbJsVFmw89TtatEB7V2IWcVmHf1wiFRXzrzjSxk'
   await Moralis.start({ serverUrl, appId });
 // q (required): The search string parameter
 // filter (required): What fields the search should match on. To look into the entire metadata set the value to global. To have a better response time you can look into a specific field like name.`
