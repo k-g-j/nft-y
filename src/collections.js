@@ -13,6 +13,11 @@ module.exports = {
       addrs: "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB",
     },
     {
+      image: "https://www.pngitem.com/pimgs/m/341-3416788_cryptokitties-svg-hd-png-download.png",
+      name: "CryptoKitties",
+      addrs: "0x06012c8cf97BEaD5deAe237070F9587f8E7A266d"
+    },
+    {
       image:
         "https://lh3.googleusercontent.com/l1wZXP2hHFUQ3turU5VQ9PpgVVasyQ79-ChvCgjoU5xKkBA50OGoJqKZeMOR-qLrzqwIfd1HpYmiv23JWm0EZ14owiPYaufqzmj1=s0",
       name: "Bored Ape Kennel Club",

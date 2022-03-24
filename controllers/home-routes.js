@@ -5,10 +5,6 @@ require('dotenv').config();
 const serverUrl = process.env.serverUrl
 const appId = process.env.appId
 
-// TODO: MOVE THESE VARIABLES INTO YOUR .ENV FILE BECAUSE I AM GOING TO REMOVE THEM FROM GITHUB FOR SECUIRTY 
-// serverUrl = 'https://dma5wmaeradr.usemoralis.com:2053/server'
-// appId = 'cMbJsVFmw89TtatEB7V2IWcVmHf1wiFRXzrzjSxk'
-
 router.get('/', (req, res) => {
   res.render('index')
 });

@@ -1,10 +1,11 @@
 const searchInput = $('.search-bar')
+const searchForm = $('.search-form')
 const searchBtn = $('.search-btn')
 const imagesDiv = $('.images-container')
 
-$(searchInput).submit(function (e) { 
+$(searchForm).submit(function (e) {
   e.preventDefault();
-  handleSearch()
+  handleSearch();
 });
 
 $(searchBtn).click(function (e) { 
@@ -13,6 +14,7 @@ $(searchBtn).click(function (e) {
 });
 
 const handleSearch = async () => {
+  $(imagesDiv).html('');
   const q = searchInput.val().trim();
   const { data } = await axios.post('/nft/search', { q })
   const nftsArr = data.NFTS
