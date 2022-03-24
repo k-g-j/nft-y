@@ -11,7 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.1098.0",
+    "aws-sdk": "^2.1100.0",
     "axios": "^0.26.1",
     "bcrypt": "^5.0.1",
     "connect-session-sequelize": "^7.1.2",
