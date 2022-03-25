@@ -27,24 +27,24 @@ nftList.init(
     },
     Addrs: {
       type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id'
-      }
+      //references: {
+        //model: 'user',
+        //key: 'id'
+      //}
     },
     project_name: {
       type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id'
-      }
+      //references: {
+        //model: 'user',
+        //key: 'id'
+      //}
     },
     users_name: {
       type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id'
-      }
+      //references: {
+        //model: 'user',
+        //key: 'id'
+      //}
     },
   },
   {
