@@ -1,39 +1,64 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-// create our User model
-class NFT extends Model {}
+class NFT extends Model { }
 
-// define table columns and configuration
 NFT.init(
-  {
-    id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true
-      },
-      name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
-      },
-      current_price: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      project_name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      }
-  },
-  {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'NFT'
-  }
+    {
+        id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true
+        },
+
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
+        },
+
+        imageurl: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isURL: true
+            }
+        },
+        //ADDRESS
+        addrs: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isURL: true
+            }
+        },
+
+        projects_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            references: {
+                model: 'projects',
+                key: "id"
+            }
+        },
+
+        users_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            references: {
+                model: 'users',
+                key: "id"
+            }
+        }
+    },
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'NFT'
+    }
 );
 
 module.exports = NFT;
