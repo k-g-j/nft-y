@@ -2,6 +2,8 @@
 // import all models
 const Post = require('./Post');
 const User = require('./User');
+const nftList = require('./nftList');
+const nftProject = require('./nftProject');
 
 // create associations
 User.hasMany(Post, {
@@ -28,4 +30,4 @@ Post.belongsToMany(User, {
   onDelete: 'SET NULL'
 });
 
-module.exports = { User, Post, Vote, Comment };
+module.exports = { User, Post, nftList, nftProject };

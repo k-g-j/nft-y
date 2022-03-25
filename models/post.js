@@ -24,8 +24,8 @@ class Post extends Model {
         ],
         include: [
           {
-            model: models.Comment,
-            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+            model: models.nftList,
+            attributes: ['id', 'name', 'imageUrl', 'Addrs', 'project_name', 'users_name', 'created_at'],
             include: {
               model: models.User,
               attributes: ['username']

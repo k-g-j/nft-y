@@ -38,6 +38,13 @@ User.init(
       validate: {
         len: [4]
       }
+    },
+    Wallet: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [4]
+      }
     }
   },
   {
