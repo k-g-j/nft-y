@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const Moralis = require('moralis/node')
 const fixURL = require('../utils/fixURL')
+const axios = require('axios')
 require('dotenv').config()
 const serverUrl = process.env.serverUrl
 const appId = process.env.appId
