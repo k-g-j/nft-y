@@ -28,10 +28,15 @@ NFT.init(
         //ADDRESS
         addrs: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             validate: {
                 isURL: true
             }
+        },
+
+        description: {
+            type: DataTypes.STRING,
+            allowNull: true,
         },
 
         projects_name: {

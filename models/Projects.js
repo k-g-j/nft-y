@@ -17,9 +17,23 @@ Projects.init(
             allowNull: false,
             unique: true
         },
+        image: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isURL: true
+            }
+        },
+        addrs: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isURL: true
+            }
+        },
         year: {
             type: DataTypes.INTEGER,
-            allowNull: TimestreamQuery,
+            allowNull: true,
         }
     },
     {
