@@ -36,7 +36,7 @@ NFT.init(
 
         projects_name: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             references: {
                 model: 'projects',
                 key: "id"
