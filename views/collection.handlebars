@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="row">
+    {{#each NFTcollection as |item|}}
+      <div class="col-md-4">
+        {{>NFTitem item}}
+      </div>
+    {{/each}}
+  </div>
+</div>

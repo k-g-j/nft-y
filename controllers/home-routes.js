@@ -1,43 +1,55 @@
 const router = require('express').Router()
 const Moralis = require('moralis/node')
 const { popularNFTs } = require('../src/collections')
+const { Projects } = require('../models/Projects')
 require('dotenv').config()
 const serverUrl = process.env.serverUrl
 const appId = process.env.appId
 
-router.get('/', (req, res) => {
-  res.render('index')
-})
-
-router.get('/nft/popular', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     // these should go into the database to seed
-    res.json(popularNFTs)
+    res.render('homepage', { popularNFTs })
   } catch (err) {
     res.status(500).json({ error: err })
   }
 })
 
-router.get('/nft/collection/BoredApeYachtClub', async (req, res) => {
+router.get('/nft/collection/:name', async (req, res) => {
   try {
-    // example response for name: "Bored Ape Yacht Club" the route will be /nft/collection/:name
-    const options = popularNFTs.map((nft) => nft.addrs)
+    // once db has the projects will use this code 
+    // const dbNFTproject = await Projects.findOne(
+    //   {
+    //     where: { name: req.params.name },
+    //     attributes: ['addrs']
+    //   })
+    const collection = popularNFTs.find(nft => nft.name === req.params.name)
     await Moralis.start({ serverUrl, appId })
     const NFTs = await Moralis.Web3API.token.getAllTokenIds({
-      address: options[0],
+      address: collection.addrs, limit: 30
     })
     let NFTcollection = NFTs.result
     for (const item of NFTcollection) {
       let metadata = JSON.parse(item['metadata'])
       let image = metadata['image'] ? metadata['image'] : false
-      image_url = image.replace('ipfs://', '')
-      formated_url = `https://ipfs.io/ipfs/${image_url}`
-      item.formated_url = formated_url
+      if (image.startsWith("ipfs")) {
+        image_url = image.replace('ipfs://', '')
+        formated_url = `https://ipfs.io/ipfs/${image_url}`
+        item.formated_url = formated_url
+      } else {
+        item.image = image
+      }
+      let unique_name = metadata['name'] ? metadata['name'] : false
+      item.unique_name = unique_name
     }
-    res.json(NFTcollection)
+    res.render('collection', { NFTcollection })
   } catch (err) {
     res.status(500).json({ error: err })
   }
+})
+
+router.get('/search', (req, res) => {
+  res.render('search')
 })
 
 router.post('/nft/search', async (req, res) => {
