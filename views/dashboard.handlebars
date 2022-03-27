@@ -1,0 +1,19 @@
+<div id="dashboard-header">
+    <h2 class="card card-header container" id="your-nfts-header">Your NFTS</h2>
+    <!-- TODO: here we would display the users NFTs if they put their wallet (see dashboard-routes) -->
+  </div>
+  {{#if nft_faves.length}}
+<section>
+  <div>
+    {{#each nft_faves as |item|}}
+    <div class="card container post-content p-5 mt-5">
+      {{> NFTitem item}}
+    </div>
+      <div class="col-md-4">
+        <button id='remove-favorite' class='btn'>Remove</button>
+      </div>
+    </div>
+    {{/each}}
+</section>
+{{/if}}
+<script src="/javascript/favorite.js"></script>

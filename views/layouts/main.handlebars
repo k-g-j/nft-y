@@ -8,10 +8,26 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
   <title>NFT-Y</title>
 </head>
-<header>
-  <h1><span>NFT-Y</span></h1>
-</header>
-<body>
-  {{{body}}}
-</body>
+  <body>
+    <div class='wrapper'>
+    <a id="logo" href='/' class="page-title card-header container mt-5"><span>console.log Blog</span></a>
+      <header>
+        <nav class='nav'>
+          <button id="home-btn" href='/' class='btn-no-style btn card w-10 m-1 mt-3 mr-2'>Home</button>
+          <a id='about-btn' href='/about' class='btn-no-style btn card w-10 m-1 mt-3 mr-2'>About</a>
+          {{#if loggedIn}}
+            <a href='/dashboard' id="main-dashboard" class="btn card w-10 m-1 mt-3 mr-2">dashboard</a>
+            <button id='logout' class='btn-no-style btn card w-10 m-1 mt-3 mr-2'>logout</button>
+          {{else}}
+            <a  id="login" class="btn card w-10 m-1 mt-3 mr-2" href='/login'>login</a>
+          {{/if}}
+        </nav>
+      </header>
+      <main>
+        {{{body}}}
+      </main>
+      <footer class="container">
+        <h3>FOOTER</h3>
+      </footer>
+    </div>
 </html>

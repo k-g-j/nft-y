@@ -3,12 +3,13 @@ const Moralis = require('moralis/node')
 const fixURL = require('../utils/fixURL')
 const axios = require('axios')
 const { NFT, User } = require('../models')
+const checkAuth = require('../utils/auth')
 require('dotenv').config()
 const serverUrl = process.env.serverUrl
 const appId = process.env.appId
 
 // render dashboard
-router.get('/', async (req, res) => {
+router.get('/', checkAuth, async (req, res) => {
   // get all user favorite nfts from DB
   try {
     const dbNFTData = await NFT.findAll({
@@ -45,7 +46,7 @@ router.get('/', async (req, res) => {
 })
 
 // if a user has sent their wallet address when registering this will return their personal NFTs
-router.get('/dashboard/nfts/:id', async (req, res) => {
+router.get('/dashboard/nfts/:id', checkAuth, async (req, res) => {
   try {
     const user = await User.findOne({ id: req.params.id })
     const options = { chain: 'eth', address: user.wallet }

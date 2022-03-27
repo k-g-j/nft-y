@@ -6,6 +6,7 @@ require('dotenv').config()
 const serverUrl = process.env.serverUrl
 const appId = process.env.appId
 
+// homepage
 router.get('/', async (req, res) => {
   try {
     // these should go into the database to seed
@@ -15,6 +16,7 @@ router.get('/', async (req, res) => {
   }
 })
 
+// get individual collection route
 router.get('/nft/collection/:name', async (req, res) => {
   try {
     // once db has the projects will use this code 
@@ -52,6 +54,7 @@ router.get('/search', (req, res) => {
   res.render('search')
 })
 
+// search results
 router.post('/nft/search', async (req, res) => {
   try {
     await Moralis.start({ serverUrl, appId })
@@ -104,6 +107,11 @@ router.post('/nft/search', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err })
   }
+})
+
+// show the about page 
+router.get('/about', async (req, res) => {
+  res.render('about')
 })
 
 module.exports = router
