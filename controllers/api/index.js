@@ -1,4 +1,5 @@
 const router = require('express').Router();
+// TODO: fill out these files to activate the routes 
 // const userRoutes = require('./user-routes');
 // const nftRoutes = require('./nft-routes');
 

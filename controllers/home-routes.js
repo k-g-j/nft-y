@@ -109,9 +109,27 @@ router.post('/nft/search', async (req, res) => {
   }
 })
 
-// show the about page 
+// show the about page
 router.get('/about', async (req, res) => {
   res.render('about')
+})
+
+// show the chat page
+router.get('/chat', async (req, res) => {
+  try {
+    res.render('chat-home')
+  } catch (err) {
+    console.log(err)
+    res.status(500).json({ error: err })
+  }
+})
+router.get('/chat.handlebars', async (req, res) => {
+  try {
+    res.render('chat')
+  } catch (err) {
+    console.log(err)
+    res.status(500).json({ error: err })
+  }
 })
 
 module.exports = router
