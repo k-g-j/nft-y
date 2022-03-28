@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-//I will change 'id' names and etc when I get handlebar files
 async function loginFormHandler(event) {
     event.preventDefault();
   
@@ -54,8 +52,3 @@ async function loginFormHandler(event) {
   
   document.querySelector('.signup-form').addEventListener('submit', signupFormHandler);
   
-=======
-// TODO: add logic to user login or signup form to create user or log them in when they submit
-
-// Note: see form for logging in from Module 14 and routes for users
->>>>>>> d3c69bff89681f35cf424510f2684185ea0116c2

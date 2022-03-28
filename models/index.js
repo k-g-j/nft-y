@@ -1,33 +1,22 @@
-//I will change foreignKeys and functions when I get seeds files
-// import all models
-const Post = require('./Post');
-const User = require('./User');
-const nftList = require('./nftList');
-const nftProject = require('./nftProject');
+const Users = require('./Users');
+const Projects = require('./Projects');
+const NFT = require('./NFT');
 
-// create associations
-User.hasMany(Post, {
-  foreignKey: 'user_id'
+Users.hasMany(NFT, {
+    foreignKey: 'users_id'
 });
 
-Post.belongsTo(User, {
-  foreignKey: 'user_id',
-  onDelete: 'SET NULL'
+NFT.belongsTo(Users, {
+    foreignKey: 'users_id',
 });
 
-User.belongsToMany(Post, {
-  through: Vote,
-  as: 'voted_posts',
-
-  foreignKey: 'user_id',
-  onDelete: 'SET NULL'
+Projects.hasMany(NFT, {
+    foreignKey: 'projects_id'
 });
 
-Post.belongsToMany(User, {
-  through: Vote,
-  as: 'voted_posts',
-  foreignKey: 'post_id',
-  onDelete: 'SET NULL'
+NFT.belongsTo(Projects, {
+    foreignKey: 'projects_id',
 });
 
-module.exports = { User, Post, nftList, nftProject };
+
+module.exports = { Users, Projects, NFT }
