@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    {{#each NFTcollection as |item|}}
+      <div class="col-md-4">
+        {{>NFTitem item}}
+      </div>
+      <div class="col-md-4">
+        <button id='add-favorite' class='btn'>Favorite</button>
+      </div>
+    {{/each}}
+  </div>
+</div>
+<script src="/javascript/favorite.js"></script>

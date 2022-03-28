@@ -1,0 +1,15 @@
+<div class='card'>
+  <div class='card-body'>
+    {{#if unique_name}}
+      <h5 class='card-title'>{{unique_name}}</h5>
+    {{else}}
+      <h5 class='card-title'>{{name}}</h5>
+    {{/if}}
+    <div class="container">
+      {{#if image}}
+        <img src='{{image}}' width='25%' alt='{{name}}'/>
+        {{else}}
+        <img src='{{formated_url}}' class='card-img-top' alt='{{name}}' width="25%">
+      {{/if}}
+      <span><p>{{amount}}</p>{{symbol}}</span>
+</div>
