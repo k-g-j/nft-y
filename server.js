@@ -10,11 +10,13 @@ require('dotenv').config();
 // server
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// TODO: add session storage 
 // session storage
 // const sequelize = require('./config/connection');
 // const SequelizeStore = require('connect-session-sequelize')(session.Store);
 // const sess = {
-//   secret: 'deepest darkest secret',
+//   secret: process.env.SESSION_SECRET,
 //   cookie: {},
 //   resave: false,
 //   saveUninitialized: true,

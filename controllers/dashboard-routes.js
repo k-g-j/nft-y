@@ -29,7 +29,7 @@ router.get('/', checkAuth, async (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['username'],
+          attributes: ['username', 'email', 'wallet'],
         },
       ],
     })
