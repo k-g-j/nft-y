@@ -44,15 +44,17 @@
  
   For any questions, please contact me with the information below:
  
-  GitHub: (https://github.com/K-G-J)<br />
-  (https://github.com/cesarsiguencia)<br />
-  (https://github.com/athanasiak18)<br />
-  (https://github.com/LavonJGreen)<br />
-  (https://github.com/Jiyeon31)<br />
+  GitHub: 
+  https://github.com/K-G-J<br />
+  https://github.com/cesarsiguencia<br />
+  https://github.com/athanasiak18<br />
+  https://github.com/LavonJGreen<br />
+  https://github.com/Jiyeon31<br />
   
 
   
-  Email: johnson.kat.g@gmail.com<br />
+  Email: 
+  johnson.kat.g@gmail.com<br />
   cesar.siguencia@gmail.com<br />
   lavonj.green@gmail.com<br />
   
