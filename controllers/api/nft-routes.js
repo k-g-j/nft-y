@@ -89,7 +89,7 @@ router.post('/', checkAuth, async (req, res) => {
 router.delete('/:id', checkAuth, async (req, res) => {
   try {
     const dbNFTData = await NFT.destroy({
-      where: { id: req.params.id, name: req.params.name },
+      where: { id: req.params.id },
     })
     if (!dbNFTData) {
       res.status(404).json({ message: 'No post found with this id' })

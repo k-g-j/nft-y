@@ -4,21 +4,20 @@ const searchBtn = $('.search-btn')
 const imagesDiv = $('.images-container')
 
 $(searchForm).submit(function (e) {
-  e.preventDefault();
-  handleSearch();
-});
-
-$(searchBtn).click(function (e) { 
-  e.preventDefault();
+  e.preventDefault()
   handleSearch()
-});
+})
+
+$(searchBtn).click(function (e) {
+  e.preventDefault()
+  handleSearch()
+})
 
 const handleSearch = async () => {
-  $(imagesDiv).html('');
-  const q = searchInput.val().trim();
-  const { data } = await axios.post('/nft/search', { q })
+  $(imagesDiv).html('')
+  const q = searchInput.val().trim()
+  const { data } = await axios.post('/search/nft', { q })
   const nftsArr = data.NFTS
-  console.log(nftsArr)
   for (const item of nftsArr) {
     if (item.image) {
       item.img_src = item.image
@@ -31,7 +30,21 @@ const handleSearch = async () => {
       let nftDescription = document.createElement('p')
       $(nftDescription).text(item.description)
       imagesDiv[0].appendChild(nftDescription)
-
+      let favoriteBtn = document.createElement('button')
+      $(favoriteBtn).text('favorite')
+      $(favoriteBtn).click(async function (e) {
+        try {
+          const { data } = await axios.post('/nft/favorite', {
+            name: item.name,
+            imageurl: item.image,
+            description: item.description,
+          })
+        } catch (err) {
+          alert(err)
+          console.log(err)
+        }
+      })
+      imagesDiv[0].appendChild(favoriteBtn)
     } else if (item.image_url) {
       item.img_src = item.image_url
       let nftImg = document.createElement('img')
@@ -43,7 +56,22 @@ const handleSearch = async () => {
       let nftDescription = document.createElement('p')
       $(nftDescription).text(item.description)
       imagesDiv[0].appendChild(nftDescription)
-
+      let favoriteBtn = document.createElement('button')
+      $(favoriteBtn).text('favorite')
+      $(favoriteBtn).click(async function (e) {
+        e.preventDefault()
+        try {
+          const { data } = await axios.post('/nft/favorite', {
+            name: item.name,
+            imageurl: item.image_url,
+            description: item.description,
+          })
+        } catch (err) {
+          alert(err)
+          console.log(err)
+        }
+      })
+      imagesDiv[0].appendChild(favoriteBtn)
     } else {
       item.img_src = null
     }
