@@ -36,6 +36,9 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   try {
     dbNFTData = await NFT.findOne({
+      where: {
+        id: req.params.id,
+      },
       attributes: [
         'id',
         'name',
@@ -85,7 +88,9 @@ router.post('/', checkAuth, async (req, res) => {
 // this occurs when a user clicks the "remove" button
 router.delete('/:id', checkAuth, async (req, res) => {
   try {
-    const dbNFTData = await NFT.destroy({ where: { id: req.params.id } })
+    const dbNFTData = await NFT.destroy({
+      where: { id: req.params.id, name: req.params.name },
+    })
     if (!dbNFTData) {
       res.status(404).json({ message: 'No post found with this id' })
       return
