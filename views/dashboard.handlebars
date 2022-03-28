@@ -1,6 +1,7 @@
 <div id="dashboard-header">
     <h2 class="card card-header container" id="your-nfts-header">Your NFTS</h2>
-    <!-- {{#if user.wallet}} -->
+    <!-- {{#if nft_faves[0].user.wallet}} -->
+    <p id="user-wallet-address" class='d-hidden'>{{nft_faves[0].user.wallet}}</p>}</p>
     <!-- TODO: here we would display the users NFTs if they put their wallet (see dashboard-routes) -->
     {{!-- <div id="your-nfts"></div> --}}
     <!-- {{else}} -->
@@ -11,11 +12,12 @@
 <section>
   <div>
     {{#each nft_faves as |item|}}
+    <p id="nft-id" class="d-hidden">{{item.id}}</p>
     <div class="card container post-content p-5 mt-5">
       {{> NFTitem item}}
     </div>
       <div class="col-md-4">
-        <button id='remove-favorite' class='btn'>Remove</button>
+        <button id="remove-favorite" class="btn">Remove</button>
       </div>
     </div>
     {{/each}}

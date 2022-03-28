@@ -46,10 +46,10 @@ router.get('/', checkAuth, async (req, res) => {
 })
 
 // if a user has sent their wallet address when registering this will return their personal NFTs
-router.get('/dashboard/nfts/:id', checkAuth, async (req, res) => {
+router.get('/dashboard/usernfts', async (req, res) => {
   try {
-    const user = await User.findOne({ id: req.params.id })
-    const options = { chain: 'eth', address: user.wallet }
+    // const user = await User.findOne({ id: req.params.id })
+    const options = { chain: 'eth', address: '0x8a08e3Ce6CED24d376a13C544E45d4DDa02FaFEA' }
     await Moralis.start({ serverUrl, appId })
     const userNFTs = await Moralis.Web3API.account.getNFTs(options)
     userNFTs.forEach(async function (nft) {
