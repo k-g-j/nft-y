@@ -7,7 +7,7 @@
 // api/users/seed -- seed the user table with dummy data
 router.get('/seed', async (req, res) => {
   try {
-    await User.bulkCreate([
+    const userDBseed = await User.bulkCreate([
       {
         username: 'NFT guy',
         email: 'nftguy@email.com',
@@ -27,6 +27,7 @@ router.get('/seed', async (req, res) => {
         wallet: '0xA1707c82aa2866955991c7f2C6F431d6619B8b4c',
       },
     ])
+    res.json({ message: 'Seeded the user table with dummy data' })
   } catch (err) {
     console.log(err)
     res.status(500).json(err)
