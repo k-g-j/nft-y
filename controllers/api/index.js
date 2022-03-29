@@ -15,7 +15,5 @@ const checkAuth = require('../../utils/auth');
 router.use('/users', userRoutes);
 router.use('/nfts', nftRoutes);
 
-module.exports = router;
-
 
 module.exports = router;

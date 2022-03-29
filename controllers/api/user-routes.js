@@ -5,6 +5,7 @@
 // NOTE: refer to module 14 and remember to use req.session.save() and req.session.destroy()
 
 // api/users/seed -- seed the user table with dummy data
+const router = require('express').Router()
 router.get('/seed', async (req, res) => {
   try {
     await User.bulkCreate([
@@ -31,4 +32,5 @@ router.get('/seed', async (req, res) => {
     console.log(err)
     res.status(500).json(err)
   }
-})
+});
+module.exports = router
