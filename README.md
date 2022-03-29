@@ -10,7 +10,7 @@
   * [Usage](#usage)
   * [Screenshots](#screenshots)
   * [License](#license)
-  * [Qustions?](#questions?)
+  * [Questions](#questions)
 
   ## Installation
   
@@ -27,14 +27,14 @@
     
   ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
   
-  ## Questions?
+  ## Questions
  
   For any questions, please contact me with the information below:
  
   GitHub:<br />
   • Kate Johnson: https://github.com/K-G-J<br />
   • Cesar Siguencia: https://github.com/cesarsiguencia<br />
-  • Athanasia Kotopulos: https://github.com/athanasiak18<br />
+  • Athanasia Kotopoulos: https://github.com/athanasiak18<br />
   • Lavon Green: https://github.com/LavonJGreen<br />
   • Jiyeon You: https://github.com/Jiyeon31<br />
   
@@ -43,7 +43,7 @@
   Email:<br />
   • Kate Johnson: johnson.kat.g@gmail.com<br />
   • Cesar Siguencia: cesar.siguencia@gmail.com<br />
-  • Athanasia Kotopulos:<br />
+  • Athanasia Kotopoulos:<br />
   • Lavon Green: lavonj.green@gmail.com<br />
   • Jiyeon You: zhdzhddlx@gmail.com<br />
   
