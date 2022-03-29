@@ -10,7 +10,7 @@
   * [Usage](#usage)
   * [Screenshots](#screenshots)
   * [License](#license)
-  * [Qustions?](#questions?)
+  * [Questions?](#questions?)
 
   ## Installation
   
