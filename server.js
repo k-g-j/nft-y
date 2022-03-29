@@ -4,6 +4,7 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const http = require('http');
 const socketio = require('socket.io');
+const cookieParser = require('cookie-parser');
 const formatMessage = require('./utils/messages');
 const { userJoin, getCurrentUser, userLeave, getRoomUsers } = require('./utils/users');
 require('dotenv').config();
@@ -13,18 +14,19 @@ const PORT = process.env.PORT || 3001;
 
 // TODO: add session storage 
 // session storage
-// const sequelize = require('./config/connection');
-// const SequelizeStore = require('connect-session-sequelize')(session.Store);
-// const sess = {
-//   secret: process.env.SESSION_SECRET,
-//   cookie: {},
-//   resave: false,
-//   saveUninitialized: true,
-//   store: new SequelizeStore({
-//     db: sequelize
-//   })
-// };
-// app.use(session(sess));
+const sequelize = require('./config/connection');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const sess = {
+  secret: process.env.SESSION_SECRET,
+  cookie: {},
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+};
+app.use(cookieParser(process.env.SESSION_SECRET));
+app.use(session(sess));
 // view engine
 const helpers = require('./utils/helpers');
 const hbs = exphbs.create({ helpers });
@@ -38,9 +40,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(require('./controllers/'));
 
 // TODO start server and connect to db
-// sequelize.sync({ force: false }).then(() => {
-//   app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
-// });
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log(`Now listening on ${PORT}`));
+});
 
 // app.listen(PORT, () => {
 //   console.log(`app listening on port ${PORT}`)
