@@ -10,7 +10,7 @@
   * [Usage](#usage)
   * [Screenshots](#screenshots)
   * [License](#license)
-  * [Questions?](#questions?)
+  * [Questions](#questions)
 
   ## Installation
   
@@ -27,7 +27,7 @@
     
   ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
   
-  ## Questions?
+  ## Questions
  
   For any questions, please contact me with the information below:
  
