@@ -10,7 +10,6 @@
   * [Usage](#usage)
   * [Screenshots](#screenshots)
   * [License](#license)
-  * [Contributing](#contributing)
   * [Tests](#tests)
   * [License](#license)
   
@@ -30,9 +29,6 @@
   ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
   
   
-  ## Contributing
-  
-  -
   
   ## Tests
   
