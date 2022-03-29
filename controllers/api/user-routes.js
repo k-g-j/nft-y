@@ -1,3 +1,5 @@
+const router = require('express').Router()
+
 // TODO: FOR USER TO UPDATE THEIR PASSWORD, { individualHooks: true, } needs to be declared under Users.update declarations for bcrypt to work.
 
 // TODO: add routes for getting users, creating a user, loging in a user, logging out a user, deleting a user
@@ -33,3 +35,5 @@ router.get('/seed', async (req, res) => {
     res.status(500).json(err)
   }
 })
+
+module.exports = router

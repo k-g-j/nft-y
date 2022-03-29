@@ -18,17 +18,15 @@ NFT.init(
             unique: true
         },
 
-        imageurl: {
+        unique_name: {
             type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                isURL: true
-            }
+            unique: true
         },
-        //ADDRESS
-        addrs: {
+
+        image: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
             validate: {
                 isURL: true
             }
@@ -37,15 +35,6 @@ NFT.init(
         description: {
             type: DataTypes.STRING,
             allowNull: true,
-        },
-
-        projects_name: {
-            type: DataTypes.STRING,
-            allowNull: true,
-            references: {
-                model: 'projects',
-                key: "id"
-            }
         },
 
         users_name: {

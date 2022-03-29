@@ -19,10 +19,9 @@ router.get('/', checkAuth, async (req, res) => {
       attributes: [
         'id',
         'name',
-        'imageurl',
-        'addrs',
+        'unique_name',
+        'image',
         'description',
-        'projects_name',
         'users_name',
       ],
       order: [['created_at', 'DESC']],
@@ -46,17 +45,27 @@ router.get('/', checkAuth, async (req, res) => {
 })
 
 // if a user has sent their wallet address when registering this will return their personal NFTs
-router.get('/usernfts', async (req, res) => {
+router.post('/usernfts', async (req, res) => {
   try {
-    // const user = await User.findOne({ id: req.params.id })
-    const options = { chain: 'eth', address: '0x8a08e3Ce6CED24d376a13C544E45d4DDa02FaFEA' }
+    const options = {
+      chain: 'eth',
+      address: req.body.userWallet
+    }
     await Moralis.start({ serverUrl, appId })
-    const userNFTs = await Moralis.Web3API.account.getNFTs(options)
-    userNFTs.forEach(async function (nft) {
-      let url = fixURL(nft.token_uri)
-      const { data } = await axios.get(url)
-      res.json(data)
-    })
+    const userNFTsRes = await Moralis.Web3API.account.getNFTs(options)
+    let userNFTs = userNFTsRes.result
+    for (const item of userNFTs) {
+      let metadata = JSON.parse(item['metadata'])
+      let image = metadata['image'] ? metadata['image'] : false
+      if (image.startsWith('ipfs')) {
+        image_url = image.replace('ipfs://', '')
+        formated_url = `https://ipfs.io/ipfs/${image_url}`
+        item.image = formated_url
+      } else {
+        item.image = image
+      }
+    }
+    res.json(userNFTs)
   } catch (err) {
     res.status(500).json({ error: err })
   }

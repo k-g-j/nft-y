@@ -10,13 +10,5 @@ NFT.belongsTo(Users, {
     foreignKey: 'users_id',
 });
 
-Projects.hasMany(NFT, {
-    foreignKey: 'projects_id'
-});
-
-NFT.belongsTo(Projects, {
-    foreignKey: 'projects_id',
-});
-
 
 module.exports = { Users, Projects, NFT }

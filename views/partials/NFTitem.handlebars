@@ -1,15 +1,15 @@
 <div class='card'>
   <div class='card-body'>
     {{#if unique_name}}
-      <h5 class='card-title'>{{unique_name}}</h5>
+      <h5 id='unique_name' class='card-title'>{{unique_name}}</h5>
     {{else}}
-      <h5 class='card-title'>{{name}}</h5>
+      <h5 id='name' class='card-title'>{{name}}</h5>
     {{/if}}
     <div class="container">
       {{#if image}}
-        <img src='{{image}}' width='25%' alt='{{name}}'/>
+        <img id='image' src='{{image}}' width='25%' alt='{{name}}'/>
         {{else}}
-        <img src='{{formated_url}}' class='card-img-top' alt='{{name}}' width="25%">
+        <img id='image-stand-in' src='https://www.clubscikidzmd.com/wp-content/uploads/2020/11/coming-soon-neon-sign-coming-soon-badge-in-vector-21133321.jpg' width='25%' alt='{{name}}'/>
       {{/if}}
-      <span><p>{{amount}}</p>{{symbol}}</span>
+      <span><p id='amount'>{{amount}}</p><p id='symbol'>{{symbol}}</p></span>
 </div>

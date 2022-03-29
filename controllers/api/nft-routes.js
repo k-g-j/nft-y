@@ -1,9 +1,7 @@
 const router = require('express').Router()
-const sequelize = require('../../config/connection')
 const { NFT, User } = require('../../models')
 // authentication middleware
 const checkAuth = require('../../utils/auth')
-const { route } = require('../dashboard-routes')
 
 // get all nfts
 router.get('/', async (req, res) => {
@@ -12,10 +10,9 @@ router.get('/', async (req, res) => {
       attributes: [
         'id',
         'name',
-        'imageurl',
-        'addrs',
+        'unique_name',
+        'image',
         'description',
-        'projects_name',
         'users_name',
       ],
       order: [['created_at', 'DESC']],
@@ -42,10 +39,9 @@ router.get('/:id', async (req, res) => {
       attributes: [
         'id',
         'name',
-        'imageurl',
-        'addrs',
+        'unique_name',
+        'image',
         'description',
-        'projects_name',
         'users_name',
       ],
       order: [['created_at', 'DESC']],
@@ -72,10 +68,9 @@ router.post('/', checkAuth, async (req, res) => {
   try {
     const dbNFTData = await NFT.create({
       name: req.body.name,
-      imageurl: req.body.imageurl,
-      addrs: req.body.addrs,
+      unique_name: req.body.unique_name,
+      image: req.body.image,
       description: req.body.description,
-      projects_name: req.body.projects_name,
       users_name: req.session.user_id,
     })
     res.json({ dbNFTData })
@@ -228,7 +223,7 @@ router.get('/seed', async (req, res) => {
         addrs: '0xd4e4078ca3495DE5B1d4dB434BEbc5a986197782',
       },
     ])
-    res.json({ message: 'Success' })
+    res.json({ message: 'seeded the projects table' })
   } catch (err) {
     console.log(err)
     res.status(500).json(err)

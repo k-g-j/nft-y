@@ -15,7 +15,7 @@ module.exports = {
     {
       image: "https://www.pngitem.com/pimgs/m/341-3416788_cryptokitties-svg-hd-png-download.png",
       name: "CryptoKitties",
-      addrs: "0x06012c8cf97BEaD5deAe237070F9587f8E7A266d"
+      addrs: "0x239bb341b85A15F31Ad0E724B95Bd388836A6F15"
     },
     {
       image:
@@ -66,7 +66,7 @@ module.exports = {
     {
       image: "https://chaindebrief.com/wp-content/uploads/2021/07/axie-infinity-1.png",
       name: "Axie Infinity",
-      addrs: "0xF5D669627376EBd411E34b98F19C868c8ABA5ADA."
+      addrs: "0xF5b0A3eFB8e8E4c201e2A935F110eAaF3FFEcb8d"
     },
     {
       image: "https://miro.medium.com/max/640/0*GCQlu6dpQwV_jXKr.png",
@@ -81,7 +81,7 @@ module.exports = {
     {
       image: "https://miro.medium.com/max/1400/1*tt4UiCERm8ZdzwQ5y1DSOw.png",
       name: "Art Blocks",
-      addrs: "0x059EDD72Cd353dF5106D2B9cC5ab83a52287aC3a"
+      addrs: "0xa7d8d9ef8D8Ce8992Df33D8b8CF4Aebabd5bD270"
     },
     {
       image: "https://lh3.googleusercontent.com/6cVSUgEYbPR43dfnoNYbKnIvY7cfPHywosowwj7mLV9v36kRKUMRS68fHYsQTRXCnzI8nw2ZI7-CP1D-CFxRGhznYINSLvmh8DH3kA=w1400-k",
@@ -106,7 +106,7 @@ module.exports = {
     {
       image: "https://hashmasksstore.blob.core.windows.net/hashmasksthumbs/12054.png",
       name: "Hashmasks",
-      addrs: "0x5872E64C3f93363822D2B1e4717Be3398FDCEA51"
+      addrs: "0xC2C747E0F7004F9E8817Db2ca4997657a7746928"
     },
     {
       image: "https://www.larvalabs.com/public/images/autoglyphs/glyph1.svg",

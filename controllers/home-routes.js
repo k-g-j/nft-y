@@ -28,7 +28,7 @@ router.get('/nft/collection/:name', async (req, res) => {
     const collection = popularNFTs.find(nft => nft.name === req.params.name)
     await Moralis.start({ serverUrl, appId })
     const NFTs = await Moralis.Web3API.token.getAllTokenIds({
-      address: collection.addrs, limit: 30
+      address: collection.addrs, chain: 'eth', limit: 30
     })
     let NFTcollection = NFTs.result
     for (const item of NFTcollection) {
@@ -37,7 +37,7 @@ router.get('/nft/collection/:name', async (req, res) => {
       if (image.startsWith("ipfs")) {
         image_url = image.replace('ipfs://', '')
         formated_url = `https://ipfs.io/ipfs/${image_url}`
-        item.formated_url = formated_url
+        item.image = formated_url
       } else {
         item.image = image
       }
