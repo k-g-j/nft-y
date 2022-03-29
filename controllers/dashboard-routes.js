@@ -28,7 +28,7 @@ router.get('/', checkAuth, async (req, res) => {
       order: [['created_at', 'DESC']],
       include: [
         {
-          model: User,
+          model: Users,
           attributes: ['username', 'email', 'wallet'],
         },
       ],

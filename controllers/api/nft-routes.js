@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const sequelize = require('../../config/connection')
-const { NFT, User } = require('../../models')
+const { NFT, Users } = require('../../models')
 // authentication middleware
 const checkAuth = require('../../utils/auth')
 const { route } = require('../dashboard-routes')
@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
       order: [['created_at', 'DESC']],
       include: [
         {
-          model: User,
+          model: Users,
           attributes: ['username'],
         },
       ],
@@ -51,7 +51,7 @@ router.get('/:id', async (req, res) => {
       order: [['created_at', 'DESC']],
       include: [
         {
-          model: User,
+          model: Users,
           attributes: ['username'],
         },
       ],
