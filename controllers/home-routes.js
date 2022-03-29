@@ -9,6 +9,7 @@ const appId = process.env.appId
 // homepage
 router.get('/', async (req, res) => {
   try {
+    // TODO: adjust after db seeded
     // these should go into the database to seed
     res.render('homepage', { popularNFTs })
   } catch (err) {
@@ -18,8 +19,9 @@ router.get('/', async (req, res) => {
 
 // get individual collection route
 router.get('/nft/collection/:name', async (req, res) => {
+  // TODO: adjust after db seeded
   try {
-    // once db has the projects will use this code 
+    // once db has the projects will use this code
     // const dbNFTproject = await Projects.findOne(
     //   {
     //     where: { name: req.params.name },
@@ -34,7 +36,7 @@ router.get('/nft/collection/:name', async (req, res) => {
     for (const item of NFTcollection) {
       let metadata = JSON.parse(item['metadata'])
       let image = metadata['image'] ? metadata['image'] : false
-      if (image.startsWith("ipfs")) {
+      if (image.toString().startsWith("ipfs")) {
         image_url = image.replace('ipfs://', '')
         formated_url = `https://ipfs.io/ipfs/${image_url}`
         item.image = formated_url

@@ -1,4 +1,6 @@
 const router = require('express').Router()
+// authentication middleware
+const checkAuth = require('../utils/auth')
 
 // TODO: FOR USER TO UPDATE THEIR PASSWORD, { individualHooks: true, } needs to be declared under Users.update declarations for bcrypt to work.
 
@@ -7,7 +9,7 @@ const router = require('express').Router()
 // NOTE: refer to module 14 and remember to use req.session.save() and req.session.destroy()
 
 // api/users/seed -- seed the user table with dummy data
-router.get('/seed', async (req, res) => {
+router.post('/seed', async (req, res) => {
   try {
     const userDBseed = await User.bulkCreate([
       {

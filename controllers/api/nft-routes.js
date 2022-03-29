@@ -98,7 +98,7 @@ router.delete('/:id', checkAuth, async (req, res) => {
 })
 
 // api/nft/seed -- seed the NFT table with dummy data
-router.get('/seed', async (req, res) => {
+router.post('/seed', async (req, res) => {
   try {
     const dbProjectsData = await Projects.bulkCreate([
       {
