@@ -1,4 +1,4 @@
-# NFT-Y 
+  # NFT-Y 
   ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
   
   ## Description 
@@ -10,9 +10,8 @@
   * [Usage](#usage)
   * [Screenshots](#screenshots)
   * [License](#license)
-  * [Tests](#tests)
-  * [License](#license)
-  
+  * [Qustions?](#questions?)
+
   ## Installation
   
   install dependencies and run app.
@@ -28,32 +27,25 @@
     
   ![License](https://img.shields.io/badge/License-MIT-yellow.svg)
   
-  
-  
-  ## Tests
-  
-  
-  ---
-  
   ## Questions?
  
   For any questions, please contact me with the information below:
  
-  GitHub: 
-  https://github.com/K-G-J<br />
-  https://github.com/cesarsiguencia<br />
-  https://github.com/athanasiak18<br />
-  https://github.com/LavonJGreen<br />
-  https://github.com/Jiyeon31<br />
+  GitHub:<br />
+  • Kate Johnson: https://github.com/K-G-J<br />
+  • Cesar Siguencia: https://github.com/cesarsiguencia<br />
+  • Athanasia Kotopulos: https://github.com/athanasiak18<br />
+  • Lavon Green: https://github.com/LavonJGreen<br />
+  • Jiyeon You: https://github.com/Jiyeon31<br />
   
 
   
-  Email: 
-  johnson.kat.g@gmail.com<br />
-  cesar.siguencia@gmail.com<br />
-  lavonj.green@gmail.com<br />
-  
-  zhdzhddlx@gmail.com<br />
+  Email:<br />
+  • Kate Johnson: johnson.kat.g@gmail.com<br />
+  • Cesar Siguencia: cesar.siguencia@gmail.com<br />
+  • Athanasia Kotopulos:<br />
+  • Lavon Green: lavonj.green@gmail.com<br />
+  • Jiyeon You: zhdzhddlx@gmail.com<br />
   
   
   
