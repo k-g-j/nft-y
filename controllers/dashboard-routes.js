@@ -46,7 +46,7 @@ router.get('/', checkAuth, async (req, res) => {
 })
 
 // if a user has sent their wallet address when registering this will return their personal NFTs
-router.get('/dashboard/usernfts', async (req, res) => {
+router.get('/usernfts', async (req, res) => {
   try {
     // const user = await User.findOne({ id: req.params.id })
     const options = { chain: 'eth', address: '0x8a08e3Ce6CED24d376a13C544E45d4DDa02FaFEA' }
