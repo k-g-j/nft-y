@@ -32,20 +32,20 @@
   For any questions, please contact me with the information below:
  
   GitHub:<br />
-  ○ Kate Johnson: https://github.com/K-G-J<br />
-  ○ Cesar Siguencia: https://github.com/cesarsiguencia<br />
-  ○ Athanasia Kotopulos: https://github.com/athanasiak18<br />
-  ○ Lavon Green: https://github.com/LavonJGreen<br />
-  ○ Jiyeon You: https://github.com/Jiyeon31<br />
+  • Kate Johnson: https://github.com/K-G-J<br />
+  • Cesar Siguencia: https://github.com/cesarsiguencia<br />
+  • Athanasia Kotopulos: https://github.com/athanasiak18<br />
+  • Lavon Green: https://github.com/LavonJGreen<br />
+  • Jiyeon You: https://github.com/Jiyeon31<br />
   
 
   
   Email:<br />
-  ○ Kate Johnson: johnson.kat.g@gmail.com<br />
-  ○ Cesar Siguencia: cesar.siguencia@gmail.com<br />
-  ○ Athanasia Kotopulos:<br />
-  ○ Lavon Green: lavonj.green@gmail.com<br />
-  ○ Jiyeon You: zhdzhddlx@gmail.com<br />
+  • Kate Johnson: johnson.kat.g@gmail.com<br />
+  • Cesar Siguencia: cesar.siguencia@gmail.com<br />
+  • Athanasia Kotopulos:<br />
+  • Lavon Green: lavonj.green@gmail.com<br />
+  • Jiyeon You: zhdzhddlx@gmail.com<br />
   
   
   
