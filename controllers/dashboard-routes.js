@@ -2,7 +2,7 @@ const router = require('express').Router()
 const Moralis = require('moralis/node')
 const fixURL = require('../utils/fixURL')
 const axios = require('axios')
-const { NFT, Users } = require('../models')
+const { NFT, User } = require('../models')
 const checkAuth = require('../utils/auth')
 require('dotenv').config()
 const serverUrl = process.env.serverUrl
@@ -27,7 +27,7 @@ router.get('/', checkAuth, async (req, res) => {
       order: [['created_at', 'DESC']],
       include: [
         {
-          model: Users,
+          model: User,
           attributes: ['username', 'email', 'wallet'],
         },
       ],
