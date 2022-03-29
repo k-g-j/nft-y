@@ -1,3 +1,10 @@
-// TODO: Add logic for retrieving a user's nfts from wallet address and displaying them on the page
+const userWallet = document.getElementById('user-wallet-address').innerText
+console.log(userWallet)
+const userNFTDiv = document.getElementById('user-nfts')
 
-// Note: see controllers/dashboard-routes
+const getUserNFTs = async () => {
+  const { data } = await axios.post('/dashboard/usernfts', {userWallet} )
+    console.log(data)
+}
+
+getUserNFTs();
