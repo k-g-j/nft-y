@@ -1,10 +1,5 @@
 const router = require('express').Router()
-<<<<<<< HEAD
-const sequelize = require('../../config/connection')
-const { NFT, Users } = require('../../models')
-=======
 const { NFT, User } = require('../../models')
->>>>>>> cab9bb0a4a1bb3b67736a5792778cc3659134da2
 // authentication middleware
 const checkAuth = require('../../utils/auth')
 
@@ -23,7 +18,7 @@ router.get('/', async (req, res) => {
       order: [['created_at', 'DESC']],
       include: [
         {
-          model: Users,
+          model: User,
           attributes: ['username'],
         },
       ],
@@ -52,7 +47,7 @@ router.get('/:id', async (req, res) => {
       order: [['created_at', 'DESC']],
       include: [
         {
-          model: Users,
+          model: User,
           attributes: ['username'],
         },
       ],
