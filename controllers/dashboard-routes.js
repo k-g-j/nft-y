@@ -46,18 +46,18 @@ router.get('/', checkAuth, async (req, res) => {
 
 // if a user has sent their wallet address when registering this will return their personal NFTs
 router.post('/usernfts', async (req, res) => {
-  try {
-    const options = {
-      chain: 'eth',
-      address: req.body.userWallet
-    }
-    await Moralis.start({ serverUrl, appId })
-    const userNFTsRes = await Moralis.Web3API.account.getNFTs(options)
-    let userNFTs = userNFTsRes.result
-    for (const item of userNFTs) {
+  const options = {
+    chain: 'eth',
+    address: req.body.userWallet,
+  }
+  await Moralis.start({ serverUrl, appId })
+  const userNFTsRes = await Moralis.Web3API.account.getNFTs(options)
+  let userNFTs = userNFTsRes.result
+  for (const item of userNFTs) {
+    if (item.metadata) {
       let metadata = JSON.parse(item['metadata'])
       let image = metadata['image'] ? metadata['image'] : false
-      if (image.startsWith('ipfs')) {
+      if (image.toString().startsWith('ipfs')) {
         image_url = image.replace('ipfs://', '')
         formated_url = `https://ipfs.io/ipfs/${image_url}`
         item.image = formated_url
@@ -65,10 +65,8 @@ router.post('/usernfts', async (req, res) => {
         item.image = image
       }
     }
-    res.json(userNFTs)
-  } catch (err) {
-    res.status(500).json({ error: err })
   }
+  res.json(userNFTs)
 })
 
 module.exports = router
