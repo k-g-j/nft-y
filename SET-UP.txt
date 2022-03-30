@@ -10,7 +10,7 @@ DB_NAME = 'nft_galleries'
 DB_USER = 'your mysql username'
 DB_PW = 'your mysql password'
 
-3. in terminal open mysql shell and run "source db/schema.sql" then quit
-4. in terminal "npm start" to synch database tables and then quit server
+3. in terminal open mysql shell and run "source db/schema.sql" then "quit" to exit out of shell
+4. in terminal "npm start" to sync database tables and then quit server (control c)
 5. in terminal "npm run seed"
 6. in terminal "nodemon start" or "npm start"
