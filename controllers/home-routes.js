@@ -21,14 +21,13 @@ router.get('/', async (req, res) => {
 // get individual collection route
 router.get('/nft/collection/:name', async (req, res) => {
   try {
-    const dbProjectsData = await Projects.findOne({ where: { name: req.params.name } })
-    const project = dbProjectsData.map((project) => project.get({ plain: true }))
+    const project = await Projects.findOne({ where: { name: req.params.name } })
     await Moralis.start({ serverUrl, appId })
-    const id = 0
     const NFTs = await Moralis.Web3API.token.getAllTokenIds({
       address: project.addrs, chain: 'eth', limit: 30
     })
     let NFTcollection = NFTs.result
+    // const id = 0
     for (const item of NFTcollection) {
       let metadata = JSON.parse(item['metadata'])
       let image = metadata['image'] ? metadata['image'] : false
@@ -41,8 +40,8 @@ router.get('/nft/collection/:name', async (req, res) => {
       }
       let unique_name = metadata['name'] ? metadata['name'] : false
       item.unique_name = unique_name
-      id++;
-      item.id = id
+      // id++;
+      // item.id = id
     }
     res.render('collection', { NFTcollection })
   } catch (err) {
