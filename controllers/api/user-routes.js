@@ -48,7 +48,7 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  User.create({
+  Users.create({
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
