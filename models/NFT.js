@@ -40,10 +40,10 @@ NFT.init(
         users_name: {
             type: DataTypes.STRING,
             allowNull: false,
-            references: {
-                model: 'users',
-                key: 'username'
-            }
+            //references: {
+            //    model: 'Users',
+            //    key: 'id'
+            //}
         }
     },
     {

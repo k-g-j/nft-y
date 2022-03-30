@@ -22,9 +22,8 @@ router.get('/', checkAuth, async (req, res) => {
         'unique_name',
         'image',
         'description',
-        'users_name',
+        'users_name'
       ],
-      order: [['created_at', 'DESC']],
       include: [
         {
           model: Users,

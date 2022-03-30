@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
         'unique_name',
         'image',
         'description',
-        'users_name',
+        'users_name'
       ],
       order: [['created_at', 'DESC']],
       include: [
@@ -42,7 +42,7 @@ router.get('/:id', async (req, res) => {
         'unique_name',
         'image',
         'description',
-        'users_name',
+        'users_name'
       ],
       order: [['created_at', 'DESC']],
       include: [
