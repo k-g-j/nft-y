@@ -10,18 +10,16 @@
   </div>
   {{#if nft_faves.length}}
 <section>
-  <div>
+  <div class="nft-row">
     {{#each nft_faves as |item|}}
-    <p id="nft-id" class="hidden">{{item.id}}</p>
-    <div class="card container post-content p-5 mt-5">
+    <div class="nft-div associated-item-{{item.id}}">
+      <p id="nft-id" class="hidden">{{item.id}}</p>
       {{> NFTitem item}}
-    </div>
-      <div class="col-md-4">
         <button id="remove-favorite" class="btn">Remove</button>
-      </div>
     </div>
     {{/each}}
+    </div>
 </section>
 {{/if}}
-<script src="/javascript/favorite.js"></script>
+<script src="/javascript/removefavorite.js"></script>
 <script src="/javascript/user-nfts.js"></script>

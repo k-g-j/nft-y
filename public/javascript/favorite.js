@@ -1,31 +1,34 @@
-const nftId = document.getElementById('nft-id').innerText
+const nftDivs = document.querySelectorAll('.nft-div')
 
-const nftUniqueName = document.getElementById('unique_name').innerText
-const nftName = document.getElementById('name').innerText
-const nftImage = document.getElementById('image').getAttribute('src')
-const nftAmount = document.getElementById('amount').innerText
-const nftSymbol = document.getElementById('symbol').innerText
-const nftDescription = `${nftName} - ${nftAmount} ${nftSymbol}`
+document.querySelector('.nft-row').addEventListener('click', (e) => {
+  if (e.target.classList.contains('add-favorite')) {
+    const btnClasses = e.target.classList
+    let itemId = '';
+    for (const $class of btnClasses) {
+      if (target.classList.contains('associated-div-'))
+      itemId = $class.split('-')[2]
+      let itemClass = ".associated-item-" + itemId
+      let itemDiv = $(itemClass)
+      $(itemDiv).find('.myclass');
+    }
+    let nftUniqueName = $('.unique_name').innerText
+    let nftName = $('.name').innerText
+    let nftImage = $('.image').attr('src')
+    let nftAmount = $('.amount').innerText
+    let nftSymbol = $('.symbol').innerText
+    let nftDescription = `${nftName} - ${nftAmount} ${nftSymbol}`
 
-// post /api/nft
-const faveBtn = document.getElementById('add-favorite')
-const removeBtn = document.getElementById('remove-favorite')
+    // post /api/nft
+    let faveBtn = $('.add-favorite')
 
-faveBtn.onclick = async () => {
-  let faveAdded = await axios.post('/api/nft', {
-    name: nftName,
-    unique_name: nftUniqueName,
-    image: nftImage,
-    description: nftDescription,
-  })
-  console.log(faveAdded)
-}
-
-removeBtn.onclick = async () => {
-  let response = await axios.delete(`/api/nft/${nftId}`)
-  if (response.ok) {
-    document.location.replace('/dashboard/');
-  } else {
-    alert(response.statusText)
+    faveBtn.onclick = async () => {
+      let faveAdded = await axios.post('/api/nft', {
+        name: nftName,
+        unique_name: nftUniqueName,
+        image: nftImage,
+        description: nftDescription,
+      })
+      console.log(faveAdded)
+    }
   }
-}
+})

@@ -29,6 +29,7 @@ router.get('/nft/collection/:name', async (req, res) => {
     //   })
     const collection = popularNFTs.find(nft => nft.name === req.params.name)
     await Moralis.start({ serverUrl, appId })
+    const id = 0
     const NFTs = await Moralis.Web3API.token.getAllTokenIds({
       address: collection.addrs, chain: 'eth', limit: 30
     })
@@ -45,6 +46,8 @@ router.get('/nft/collection/:name', async (req, res) => {
       }
       let unique_name = metadata['name'] ? metadata['name'] : false
       item.unique_name = unique_name
+      id++;
+      item.id = id
     }
     res.render('collection', { NFTcollection })
   } catch (err) {

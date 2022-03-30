@@ -42,7 +42,7 @@ NFT.init(
             allowNull: false,
             references: {
                 model: 'users',
-                key: "id"
+                key: 'username'
             }
         }
     },

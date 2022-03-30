@@ -49,47 +49,47 @@ sequelize.sync({ force: false }).then(() => {
 // })
 
 // set up socket for NFTY-CHORD
-const server = http.createServer(app);
-const io = socketio(server);
+//const server = http.createServer(app);
+//const io = socketio(server);
 
-const botName = 'NFTY-Bot';
+//const botName = 'NFTY-Bot';
 
 // Run when a client connects
-io.on('connection', socket => {
-  socket.on('joinRoom', ({ username, room }) => {
-    const user = userJoin(socket.id, username, room)
-    socket.join(user.room);
+//io.on('connection', socket => {
+//  socket.on('joinRoom', ({ username, room }) => {
+//    const user = userJoin(socket.id, username, room)
+//    socket.join(user.room);
 
     // Welcome current user
-    socket.emit('message', formatMessage(botName, `Welcome to ${user.room}!`));
+//    socket.emit('message', formatMessage(botName, `Welcome to ${user.room}!`));
 
     // Broadcast when a user connects
-    socket.broadcast.to(user.room).emit('message', formatMessage(botName, `${user.username} has joined the chat`));
+//    socket.broadcast.to(user.room).emit('message', formatMessage(botName, `${user.username} has joined the chat`));
 
     // Send users and room info
-    io.to(user.room).emit('roomUsers', {
-      room: user.room,
-      users: getRoomUsers(user.room)
-    })
-  })
+//    io.to(user.room).emit('roomUsers', {
+//      room: user.room,
+//      users: getRoomUsers(user.room)
+//    })
+//  })
   // Listen for chatMessage
-  socket.on('chatMessage', msg => {
-    const user = getCurrentUser(socket.id);
-    io.to(user.room).emit('message', formatMessage(user.username, msg));
-  })
+//  socket.on('chatMessage', msg => {
+//    const user = getCurrentUser(socket.id);
+//    io.to(user.room).emit('message', formatMessage(user.username, msg));
+//  })
 
   // Runs when client disconnects
-  socket.on('disconnect', () => {
-    const user = userLeave(socket.id);
-    if (user) {
-      io.to(user.room).emit('message', formatMessage(botName, `${user.username} has left the chat`));
+//  socket.on('disconnect', () => {
+//    const user = userLeave(socket.id);
+//    if (user) {
+//      io.to(user.room).emit('message', formatMessage(botName, `${user.username} has left the chat`));
        // Send users and room info
-      io.to(user.room).emit('roomUsers', {
-        room: user.room,
-        users: getRoomUsers(user.room)
-    })
-    }
-  })
-})
+//      io.to(user.room).emit('roomUsers', {
+//        room: user.room,
+//        users: getRoomUsers(user.room)
+//    })
+//    }
+//  })
+//})
 
-server.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
+//server.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
