@@ -1,15 +1,14 @@
-// TODO: add logic to sign out a user
-// see example below
+async function logout() {
+  const response = await fetch('/api/user/logout', {
+    method: 'post',
+    headers: { 'Content-Type': 'application/json' },
+  })
 
-// async function logout() {
-//   try {
-//     const response = await axios.post('/api/users/logout');
-//     if (response.ok) {
-//       document.location.replace('/')
-//     }
-//   } catch (err) {
-//     alert(response.statusText);
-//   }
-// }
+  if (response.ok) {
+    document.location.replace('/')
+  } else {
+    console.log(response.statusText)
+  }
+}
 
-// document.querySelector('#logout').addEventListener('click', logout);
+document.querySelector('#logout').addEventListener('click', logout)

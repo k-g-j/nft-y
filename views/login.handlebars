@@ -1,5 +1,37 @@
-<div class="container">
-  <p>Add some content to me please</p>
-  <p>I need a form por favor</p>
-</div>
+<form class='row g-3 login-form'>
+  <p id="signup-error"></p>
+  <div class='col-md-6'>
+    <label for='email-login' class='form-label'>email:</label>
+    <input type='text' class='form-control' id='email-login' />
+  </div>
+  <div class='col-md-6'>
+    <label for='password-login' class='form-label'>password:</label>
+    <input type='password' class='form-control' id='password-login' />
+  </div>
+  <div class='col-12'>
+    <button type='submit' class='btn btn-primary'>login</button>
+  </div>
+</form>
+
+<form class='row g-3 signup-form'>
+  <div class='col-md-6'>
+    <label for='username-signup' class='form-label'>username:</label>
+    <input type='text' class='form-control' id='username-signup' />
+  </div>
+  <div class='col-md-6'>
+    <label for='email-signup' class='form-label'>email:</label>
+    <input type='text' class='form-control' id='email-signup' />
+  </div>
+  <div class='col-md-6'>
+    <label for='wallet-signup' class='form-label'>wallet (optional):</label>
+    <input type='text' class='form-control' id='wallet-signup' />
+  </div>
+  <div class='col-md-6'>
+    <label for='password-signup' class='form-label'>password:</label>
+    <input type='password' class='form-control' id='password-signup' />
+  </div>
+  <div class='col-12'>
+    <button type='submit' class='btn btn-primary'>signup</button>
+  </div>
+</form>
 <script src='/javascript/login.js'></script>

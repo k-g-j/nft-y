@@ -1,3 +1,55 @@
-// TODO: add logic to user login or signup form to create user or log them in when they submit
+async function loginFormHandler(event) {
+  event.preventDefault()
 
-// Note: see form for logging in from Module 14 and routes for users
+  const email = document.querySelector('#email-login').value.trim()
+  const password = document.querySelector('#password-login').value.trim()
+
+  if (email && password) {
+    const response = await fetch('/api/user/login', {
+      method: 'post',
+      body: JSON.stringify({
+        email,
+        password
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    })
+
+    if (response.ok) {
+      document.location.replace('/dashboard/')
+    } else {
+      alert(response.statusText)
+    }
+  }
+}
+
+async function signupFormHandler(event) {
+  event.preventDefault()
+
+  const username = document.querySelector('#username-signup').value.trim()
+  const email = document.querySelector('#email-signup').value.trim()
+  const password = document.querySelector('#password-signup').value.trim()
+  const wallet = document.querySelector('#wallet-signup').value.trim()
+
+  if (username && email && password) {
+    const response = await fetch('/api/user', {
+      method: 'post',
+      body: JSON.stringify({
+        username,
+        email,
+        password,
+        wallet
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    })
+
+    if (response.ok) {
+      document.location.replace('/dashboard/')
+    } else {
+      alert(response.statusText)
+    }
+  }
+}
+
+document.querySelector('.login-form').addEventListener('submit', loginFormHandler)
+
+document.querySelector('.signup-form').addEventListener('submit', signupFormHandler)

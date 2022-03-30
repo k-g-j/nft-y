@@ -22,7 +22,6 @@ router.get('/', checkAuth, async (req, res) => {
         'description',
         'users_name',
       ],
-      order: [['created_at', 'DESC']],
       include: [
         {
           model: Users,
@@ -33,6 +32,7 @@ router.get('/', checkAuth, async (req, res) => {
     const nft_faves = dbNFTData.map((nft) => nft.get({ plain: true }))
     res.render('dashboard', {
       nft_faves,
+      user_wallet: req.session.wallet,
       user_id: req.session.user_id,
       loggedIn: true,
     })

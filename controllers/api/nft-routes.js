@@ -73,7 +73,7 @@ router.post('/', checkAuth, async (req, res) => {
       description: req.body.description,
       users_name: req.session.user_id,
     })
-    res.json({ dbNFTData })
+    res.json({ message: 'success', data: dbNFTData })
   } catch (err) {
     console.log(err)
     res.status(500).json(err)
@@ -90,7 +90,7 @@ router.delete('/:id', checkAuth, async (req, res) => {
       res.status(404).json({ message: 'No post found with this id' })
       return
     }
-    res.json(dbPostData)
+    res.json({ message: 'success', data: dbNFTData })
   } catch (err) {
     console.log(err)
     res.status(500).json(err)

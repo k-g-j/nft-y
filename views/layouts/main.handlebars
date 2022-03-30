@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
+  <script src="/javascript/loadingerror.js"></script>
   <title>NFT-Y</title>
 </head>
   <body>
@@ -14,9 +15,6 @@
         <nav class='nav'>
           <a id="logo" href='/' class="page-title card-header container mt-5"><span>Home</span></a>
           <a id='about-btn' href='/about' class='btn-no-style btn card w-10 m-1 mt-3 mr-2'>About</a>
-          <!-- TODO: remove this button -->
-          <a href='/chat'>NFTY-CHORD</a>
-          <!-- should only be visible to logged-in users -->
           {{#if loggedIn}}
             <a href='/dashboard' id="main-dashboard" class="btn card w-10 m-1 mt-3 mr-2">dashboard</a>
             <button id='logout' class='btn-no-style btn card w-10 m-1 mt-3 mr-2'>logout</button>
