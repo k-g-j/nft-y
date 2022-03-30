@@ -4,31 +4,125 @@
 
 // NOTE: refer to module 14 and remember to use req.session.save() and req.session.destroy()
 
-// api/users/seed -- seed the user table with dummy data
-router.get('/seed', async (req, res) => {
-  try {
-    await User.bulkCreate([
+const router = require('express').Router();
+const { Users, NFT, Projects } = require('../../models');
+
+router.get('/', (req, res => {
+  Users.findAll({
+    attributes: { exclude: ['password'] },
+  }).then(UserData => res.json(UserData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+}))
+
+router.get('/:id', (req, res) => {
+  Users.findOne({
+    attributes: { exclude: ['password'] },
+    where: {
+      id: req.params.id
+    },
+    include: [
       {
-        username: 'NFT guy',
-        email: 'nftguy@email.com',
-        password: 'password',
-        wallet: '0x8a08e3Ce6CED24d376a13C544E45d4DDa02FaFEA',
+        model: NFT,
+        attributes: ['id', 'name', 'imageurl', 'addrs', 'description'],
+        include: {
+          model: Projects,
+          attributes: ['name']
+        }
       },
-      {
-        username: 'NFT dude',
-        email: 'nftdude@email.com',
-        password: 'password',
-        wallet: '0xD78E2165f190066E16D515f72A7115774D4548b2',
-      },
-      {
-        username: 'NFTina',
-        email: 'nftina@email.com',
-        password: 'password',
-        wallet: '0xA1707c82aa2866955991c7f2C6F431d6619B8b4c',
-      },
-    ])
-  } catch (err) {
-    console.log(err)
-    res.status(500).json(err)
-  }
+    ]
+  })
+    .then(UserData => {
+      if (!UserData) {
+        res.status(404).json({ message: 'No user found with this id' });
+        return;
+      }
+      res.json(UserData);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.post('/', (req, res) => {
+  User.create({
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+    wallet: req.body.wallet
+  })
+    .then(UserData => res.json(UserData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.post('/login', (req, res) => {
+  Users.findOne({
+    where: {
+      email: req.body.email
+    }
+  })
+  .then(UserData => {
+    if (!UserData) {
+      res.status(400).json({ message: 'Invalid email address!' });
+      return;
+    }
+    const validPassword = UserData.checkPassword(req.body.password);
+
+    if (!validPassword) {
+      res.status(400).json({ message: 'Wrong password' });
+      return;
+    }
+
+    res.json({ user: dbUserData, message: 'Logged in!' });
+  });
+
 })
+
+//Need a log out!
+
+router.put('/:id', (req, res) => {
+  Users.update(req.body, {
+    individualHooks: true,
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(UserData => {
+    if (!UserData[0]) {
+      res.status(404).json({ message: 'Invalid user!' });
+      return;
+    }
+    res.json(UserData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+
+router.delete('/:id', (req, res) => {
+  Users.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(UserData => {
+    if (!UserData) {
+      res.status(404).json({ message: 'Invalid User!' });
+      return;
+    }
+    res.json(UserData);
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
+});
+
+module.exports = router
