@@ -38,7 +38,7 @@ NFT.init(
         },
 
         users_name: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false,
             //references: {
             //    model: 'Users',
