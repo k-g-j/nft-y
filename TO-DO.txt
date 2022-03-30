@@ -1,9 +1,0 @@
-1. Style the app (just need something for thursday, does not have to be perfect)
-
-3. Add about page
-
-5. Test - Kate will handle but need steps 1-4 completed ASAP to do so
-
-5. Create presentation
-
-6. Add README

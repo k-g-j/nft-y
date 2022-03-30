@@ -11,11 +11,6 @@ const projectsData = [
       addrs: "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB",
     },
     {
-      image: "https://www.pngitem.com/pimgs/m/341-3416788_cryptokitties-svg-hd-png-download.png",
-      name: "CryptoKitties",
-      addrs: "0x239bb341b85A15F31Ad0E724B95Bd388836A6F15"
-    },
-    {
       image: "https://lh3.googleusercontent.com/l1wZXP2hHFUQ3turU5VQ9PpgVVasyQ79-ChvCgjoU5xKkBA50OGoJqKZeMOR-qLrzqwIfd1HpYmiv23JWm0EZ14owiPYaufqzmj1=s0",
       name: "Bored Ape Kennel Club",
       addrs: "0xba30E5F9Bb24caa003E9f2f0497Ad287FDF95623",
@@ -51,16 +46,6 @@ const projectsData = [
       addrs: "0x2acAb3DEa77832C09420663b0E1cB386031bA17B"
     },
     {
-      image: "https://mma.prnewswire.com/media/1603390/LazyLion.jpg?w=500",
-      name: "Lazy Lions",
-      addrs: "0x8943C7bAC1914C9A7ABa750Bf2B6B09Fd21037E0"
-    },
-    {
-      image: "https://chaindebrief.com/wp-content/uploads/2021/07/axie-infinity-1.png",
-      name: "Axie Infinity",
-      addrs: "0xF5b0A3eFB8e8E4c201e2A935F110eAaF3FFEcb8d"
-    },
-    {
       image: "https://miro.medium.com/max/640/0*GCQlu6dpQwV_jXKr.png",
       name: "Wizards & Dragons Game",
       addrs: "0x999e88075692bCeE3dBC07e7E64cD32f39A1D3ab"
@@ -71,39 +56,14 @@ const projectsData = [
       addrs: "0xEB834ae72B30866af20a6ce5440Fa598BfAd3a42"
     },
     {
-      image: "https://miro.medium.com/max/1400/1*tt4UiCERm8ZdzwQ5y1DSOw.png",
-      name: "Art Blocks",
-      addrs: "0xa7d8d9ef8D8Ce8992Df33D8b8CF4Aebabd5bD270"
-    },
-    {
       image: "https://lh3.googleusercontent.com/6cVSUgEYbPR43dfnoNYbKnIvY7cfPHywosowwj7mLV9v36kRKUMRS68fHYsQTRXCnzI8nw2ZI7-CP1D-CFxRGhznYINSLvmh8DH3kA=w1400-k",
       name: "Desperate ApeWives",
       addrs: "0xF1268733C6FB05EF6bE9cF23d24436Dcd6E0B35E"
     },
     {
-      image: "https://thedogepoundnft.com/static/media/26.38126541.jpg",
-      name: "The Doge Pound",
-      addrs: "0xF4ee95274741437636e748DdAc70818B4ED7d043"
-    },
-    {
       image: "https://lh3.googleusercontent.com/YmtOxRTAXEhp8e_0pAwGrRzoaFjZI3sW1r4DPw-O5FYC92aVT2cZ5QtaUU6UcGRwtg56u_u3Ee5DI4oksEcE2zpLQ_6zHfYqculHlOk=w600",
       name: "Pudgy Penguins",
       addrs: "0xBd3531dA5CF5857e7CfAA92426877b022e612cf8"
-    },
-    {
-      image: "https://meebits.larvalabs.com/public/images/homepage/homepagePunk1.jpg",
-      name: "Meebits",
-      addrs: "0x7Bd29408f11D2bFC23c34f18275bBf23bB716Bc7"
-    },
-    {
-      image: "https://hashmasksstore.blob.core.windows.net/hashmasksthumbs/12054.png",
-      name: "Hashmasks",
-      addrs: "0xC2C747E0F7004F9E8817Db2ca4997657a7746928"
-    },
-    {
-      image: "https://www.larvalabs.com/public/images/autoglyphs/glyph1.svg",
-      name: "Autoglyphs",
-      addrs: "0xd4e4078ca3495DE5B1d4dB434BEbc5a986197782"
     }
   ]
 const seedProjects = () => Projects.bulkCreate(projectsData);
