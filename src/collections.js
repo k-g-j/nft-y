@@ -1,6 +1,4 @@
-collections.js
 
-var base64Img = require('base64-img');
 
 module.exports = {
   "popularNFTs": [
@@ -11,8 +9,8 @@ module.exports = {
       addrs: "0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D",
     },
     {
-      imageBase64: base64Img.base64Sync(
-        "https://lh3.googleusercontent.com/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE=s130"),
+      image:
+        "https://lh3.googleusercontent.com/BdxvLseXcfl57BiuQcQYdJ64v-aI8din7WPk0Pgo3qQFhAUH-B6i-dCqqc_mCkRIzULmwzwecnohLhrcH8A9mpWIZqA7ygc52Sr81hE=s130",
       name: "Crypto Punks",
       addrs: "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB",
       
