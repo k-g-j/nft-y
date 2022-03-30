@@ -10,17 +10,17 @@
   <title>NFT-Y</title>
 </head>
   <body>
-    <div class='wrapper'>
+    <div class="wrapper">
       <header>
         <nav class='nav'>
-          <a id="logo" href='/' class="page-title card-header container mt-5"><span>Home</span></a>
-          <a id='about-btn' href='/about' class='btn-no-style btn card w-10 m-1 mt-3 mr-2'>About</a>
+          <a id="logo" href="/" class="page-title card-header container mt-5"><span>Home</span></a>
+          <a id="about-btn" href="/about" class="btn-no-style btn card w-10 m-1 mt-3 mr-2">About</a>
           {{#if loggedIn}}
-            <a href='/dashboard' id="main-dashboard" class="btn card w-10 m-1 mt-3 mr-2">dashboard</a>
-            <button id='logout' class='btn-no-style btn card w-10 m-1 mt-3 mr-2'>logout</button>
-            <a href='/chat'>NFTY-CHORD</a>
+            <a href="/dashboard" id="main-dashboard" class="btn card w-10 m-1 mt-3 mr-2">dashboard</a>
+            <button id="logout" class="btn-no-style btn card w-10 m-1 mt-3 mr-2">logout</button>
+            <a href="/chat">NFTY-CHORD</a>
           {{else}}
-            <a  id="login" class="btn card w-10 m-1 mt-3 mr-2" href='/login'>login</a>
+            <a id="login" class="btn card w-10 m-1 mt-3 mr-2" href="/login">login</a>
           {{/if}}
         </nav>
       </header>
@@ -32,6 +32,7 @@
       </footer>
     </div>
     {{#if loggedIn}}
-      <script src='/javascript/logout.js'></script>
+      <script src="/javascript/logout.js"></script>
     {{/if}}
+  </body>
 </html>

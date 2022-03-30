@@ -37,7 +37,7 @@ router.get('/:id', (req, res) => {
     .then((UserData) => {
       if (!UserData) {
         res.status(404).json({ message: 'No user found with this id' })
-        return
+        return;
       }
       res.json(UserData)
     })
@@ -53,16 +53,16 @@ router.post('/', (req, res) => {
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
-    wallet: req.body.wallet,
+    wallet: req.body.wallet
   })
-    .then((dbUserData) => {
+    .then((UserData) => {
       req.session.save(() => {
-        req.session.user_id = dbUserData.id
-        req.session.username = dbUserData.username
-        req.session.email = dbUserData.email
-        req.session.wallet = dbUserData.wallet
-        req.session.loggedIn = true
-        res.json({ message: 'success', data: dbUserData })
+        req.session.user_id = UserData.id;
+        req.session.username = UserData.username;
+        req.session.email = UserData.email;
+        req.session.wallet = UserData.wallet;
+        req.session.loggedIn = true;
+        res.json({ message: 'success', data: UserData });
       })
     })
     .catch((err) => {
@@ -75,25 +75,25 @@ router.post('/', (req, res) => {
 router.post('/login', (req, res) => {
   Users.findOne({
     where: { email: req.body.email },
-  }).then((dbUserData) => {
-    if (!dbUserData) {
+  }).then((UserData) => {
+    if (!UserData) {
       res.status(400).json({
         message: 'No user with that email address!',
       })
       return
     }
-    const validPassword = dbUserData.checkPassword(req.body.password)
+    const validPassword = UserData.checkPassword(req.body.password)
     if (!validPassword) {
       res.status(400).json({ message: 'Incorrect password!' })
       return
     }
     req.session.save(() => {
-      req.session.user_id = dbUserData.id
-      req.session.username = dbUserData.username
-      req.session.email = dbUserData.email
-      req.session.wallet = dbUserData.wallet
+      req.session.user_id = UserData.id
+      req.session.username = UserData.username
+      req.session.email = UserData.email
+      req.session.wallet = UserData.wallet
       req.session.loggedIn = true
-      res.json({ user: dbUserData, message: 'You are now logged in!' })
+      res.json({ user: UserData, message: 'You are now logged in!' })
     })
   })
 })
@@ -103,7 +103,7 @@ router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end()
-    })
+    });
   } else {
     res.status(404).end()
   }
@@ -116,12 +116,12 @@ router.put('/:id', (req, res) => {
       id: req.params.id,
     },
   })
-    .then((dbUserData) => {
-      if (!dbUserData[0]) {
+    .then((UserData) => {
+      if (!UserData[0]) {
         res.status(404).json({ message: 'Invalid user!' })
         return
       }
-      res.json(dbUserData)
+      res.json(UserData)
     })
     .catch((err) => {
       console.log(err)
@@ -135,12 +135,12 @@ router.delete('/:id', (req, res) => {
       id: req.params.id,
     },
   })
-    .then((dbUserData) => {
-      if (!dbUserData) {
+    .then((UserData) => {
+      if (!UserData) {
         res.status(404).json({ message: 'Invalid User!' })
         return
       }
-      res.json(dbUserData)
+      res.json(UserData)
     })
     .catch((err) => {
       console.log(err)
