@@ -1,16 +1,17 @@
 const router = require('express').Router()
 const Moralis = require('moralis/node')
-const { popularNFTs } = require('../src/collections')
-const { Projects } = require('../models/Projects')
+const { Projects } = require('../models')
 require('dotenv').config()
 const serverUrl = process.env.serverUrl
 const appId = process.env.appId
 
+console.log(Projects)
+
 // homepage
 router.get('/', async (req, res) => {
   try {
-    // TODO: adjust after db seeded
-    // these should go into the database to seed
+    const dbProjectsData = await Projects.findAll()
+    const popularNFTs = dbProjectsData.map((project) => project.get({ plain: true }))
     res.render('homepage', { popularNFTs })
   } catch (err) {
     res.status(500).json({ error: err })
@@ -19,19 +20,13 @@ router.get('/', async (req, res) => {
 
 // get individual collection route
 router.get('/nft/collection/:name', async (req, res) => {
-  // TODO: adjust after db seeded
   try {
-    // once db has the projects will use this code
-    // const dbNFTproject = await Projects.findOne(
-    //   {
-    //     where: { name: req.params.name },
-    //     attributes: ['addrs']
-    //   })
-    const collection = popularNFTs.find(nft => nft.name === req.params.name)
+    const dbProjectsData = await Projects.findOne({ where: { name: req.params.name } })
+    const project = dbProjectsData.map((project) => project.get({ plain: true }))
     await Moralis.start({ serverUrl, appId })
     const id = 0
     const NFTs = await Moralis.Web3API.token.getAllTokenIds({
-      address: collection.addrs, chain: 'eth', limit: 30
+      address: project.addrs, chain: 'eth', limit: 30
     })
     let NFTcollection = NFTs.result
     for (const item of NFTcollection) {

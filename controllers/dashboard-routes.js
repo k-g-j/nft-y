@@ -1,7 +1,5 @@
 const router = require('express').Router()
 const Moralis = require('moralis/node')
-const fixURL = require('../utils/fixURL')
-const axios = require('axios')
 const { NFT, Users } = require('../models')
 const checkAuth = require('../utils/auth')
 require('dotenv').config()
