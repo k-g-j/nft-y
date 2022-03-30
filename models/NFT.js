@@ -20,7 +20,7 @@ NFT.init(
 
         unique_name: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             unique: true
         },
 
