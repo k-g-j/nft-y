@@ -1,10 +1,6 @@
 1. Style the app (just need something for thursday, does not have to be perfect)
 
-2. Set up session storage in user routes (I set up server.js)
-
-3. Add content log-in and about pages
-
-4. Add scripts to login.js and log-out.js (make sure it matches controllers/api/users)
+3. Add about page
 
 5. Test - Kate will handle but need steps 1-4 completed ASAP to do so
 
