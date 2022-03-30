@@ -54,14 +54,7 @@ router.post('/', (req, res) => {
     password: req.body.password,
     wallet: req.body.wallet
   })
-    .then(UserData => {
-      req.session.save(() => {
-        req.session.user_id = UserData.id;
-        req.session.username = UserData.username;
-        req.session.loggedIn = true;
-      res.json(UserData)
-      });
-    })
+    .then(UserData => res.json(UserData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);

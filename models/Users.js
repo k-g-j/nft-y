@@ -15,12 +15,12 @@ Users.init(
         username: {
             type: DataTypes.STRING,
             allowNull: false,
-            //unique: true
+            unique: true
         },
         email: {
             type: DataTypes.STRING,
             allowNull: false,
-            //unique: true,
+            unique: true,
             validate: {
                 isEmail: true
             }
@@ -56,7 +56,7 @@ Users.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'Users'
+        modelName: 'users'
     }
 );
 
