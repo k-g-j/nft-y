@@ -11,8 +11,8 @@ router.get('/', (req, res) => {
 // search results
 router.post('/nft', async (req, res) => {
   try {
-    await Moralis.start({ serverUrl, appId }) 
-    const options = { q: req.body.q, filter: 'name, description, attributes', limit: 20 }
+    await Moralis.start({ serverUrl, appId })
+    const options = { q: req.body.q , filter: 'name', limit: 20 }
     let NFTSres = await Moralis.Web3API.token.searchNFTs(options)
 
     let result = NFTSres.result
