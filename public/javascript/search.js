@@ -33,6 +33,11 @@ const handleSearch = async () => {
       let favoriteBtn = document.createElement('button')
       $(favoriteBtn).text('favorite')
       $(favoriteBtn).click(async function (e) {
+        console.log({
+          name: item.name,
+          image: item.image,
+          description: item.description
+        })
         try {
           const { data } = await axios.post('/nft/favorite', {
             name: item.name,
@@ -61,6 +66,11 @@ const handleSearch = async () => {
       $(favoriteBtn).click(async function (e) {
         e.preventDefault()
         try {
+        console.log({
+            name: item.name,
+            image: item.image_url,
+            description: item.description
+          })
           const { data } = await axios.post('/nft/favorite', {
             name: item.name,
             imageurl: item.image_url,
