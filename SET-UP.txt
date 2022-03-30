@@ -1,0 +1,16 @@
+1. create and .env file
+2. inside the .env file place
+
+serverUrl = 'your Moralis server url'
+appId = 'your Moralis server appId'
+
+SESSION_SECRET = 'random string of characters and numbers'
+
+DB_NAME = 'nft_galleries'
+DB_USER = 'your mysql username'
+DB_PW = 'your mysql password'
+
+3. in terminal open mysql shell and run "source db/schema.sql" then quit
+4. in terminal "npm start" to synch database tables and then quit server
+5. in terminal "npm run seed"
+6. in terminal "nodemon start" or "npm start"

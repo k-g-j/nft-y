@@ -1,11 +1,22 @@
-const Sequelize = require('sequelize');
+const Sequelize = require('sequelize')
 
-require('dotenv').config();
+require('dotenv').config()
 
-const sequelize = new Sequelize('nft_galleries','username','password', {
-    host: 'localhost',
-    dialect: 'mysql',
-    port: 3350
-});
+let sequelize
 
-module.exports = sequelize;
+if (process.env.JAWSDB_URL) {
+  sequelize = new Sequelize(process.env.JAWSDB_URL)
+} else {
+  sequelize = new Sequelize(
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PW,
+    {
+      host: 'localhost',
+      dialect: 'mysql',
+      port: 3306,
+    },
+  )
+}
+
+module.exports = sequelize
