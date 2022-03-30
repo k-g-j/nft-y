@@ -4,6 +4,7 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const http = require('http');
 const socketio = require('socket.io');
+const checkAuth = require('./utils/auth');
 const formatMessage = require('./utils/messages');
 const { userJoin, getCurrentUser, userLeave, getRoomUsers } = require('./utils/users');
 require('dotenv').config();
@@ -18,11 +19,13 @@ const sess = {
   secret: process.env.SESSION_SECRET,
   cookie: {},
   resave: false,
+  rolling: true,
   saveUninitialized: true,
   store: new SequelizeStore({
     db: sequelize
   })
 };
+
 app.use(session(sess));
 // view engine
 const helpers = require('./utils/helpers');

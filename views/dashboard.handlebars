@@ -1,7 +1,6 @@
-
- <div id="dashboard-header">
+<div id="dashboard-header">
     <h2 class="card card-header container" id="your-nfts-header">Your NFTS</h2>
-    {{#if nft_faves[0].user.wallet}}
+    {{#if nft_faves.user.wallet}}
     <p id="user-wallet-address" class="hidden">0x8a08e3Ce6CED24d376a13C544E45d4DDa02FaFEA</p>
     <!-- replace with nft_faves[0].user.wallet -->
     <div id="user-nfts"></div>

@@ -22,7 +22,7 @@ router.get('/', checkAuth, async (req, res) => {
         'description',
         'users_name',
       ],
-      order: [['created_at', 'DESC']],
+      //order: [['created_at', 'DESC']],
       include: [
         {
           model: Users,

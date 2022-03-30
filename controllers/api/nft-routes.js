@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
         'description',
         'users_name',
       ],
-      order: [['created_at', 'DESC']],
+      //order: [['created_at', 'DESC']],
       include: [
         {
           model: Users,
@@ -44,7 +44,7 @@ router.get('/:id', async (req, res) => {
         'description',
         'users_name',
       ],
-      order: [['created_at', 'DESC']],
+      //order: [['created_at', 'DESC']],
       include: [
         {
           model: Users,

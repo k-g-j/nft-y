@@ -79,12 +79,27 @@ router.post('/login', (req, res) => {
       return;
     }
 
-    res.json({ user: dbUserData, message: 'Logged in!' });
-  });
+    req.session.save(() => {
+      req.session.user_id = UserData.id;
+      req.session.username = UserData.username;
+      req.session.loggedIn = true;
 
-})
+    res.json({ user: UserData, message: 'Logged in!' });
+  });
+});
+});
 
 //Need a log out!
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  }
+  else {
+    res.status(404).end();
+  }
+});
 
 router.put('/:id', (req, res) => {
   Users.update(req.body, {
