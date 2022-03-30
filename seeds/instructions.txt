@@ -1,0 +1,39 @@
+1. create project-seeds.js, user-seeds.js, nft-seeds.js
+2. in each file
+
+const { Projects } = require('../models');
+const projectsData = [
+    // array of objects here
+      // find in seeds/seeds.js
+];
+const seedProjects = () => Projects.bulkCreate(projectData);
+module.exports = seedProjects;
+
+4. in create seeds/index.js and in it:
+
+const seedProjects = require('./projects-seeds');
+const seedUsers = require('./user-seeds');
+const seedNFT = require('./nft-seeds');
+
+const sequelize = require('../config/connection');
+
+const seedAll = async () => {
+  await sequelize.sync({ force: true });
+  console.log('\n----- DATABASE SYNCED -----\n');
+
+  await seedProjects();
+  console.log('\n----- PROJECTS SEEDED -----\n');
+
+  await seedUsers();
+  console.log('\n----- USERS SEEDED -----\n');
+
+  await seedNFT();
+  console.log('\n----- NFTs SEEDED -----\n');
+
+  process.exit(0);
+};
+
+seedAll();
+
+5. add "seed": "node seeds/index.js" to scripts in package.json
+6. add "heroku-postbuild": "node seeds/index.js" to scripts in package.json
