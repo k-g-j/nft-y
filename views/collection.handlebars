@@ -3,7 +3,13 @@
     {{#each NFTcollection as |item|}}
       <div class="nft-div associated-item-{{item.id}}">
         {{>NFTitem item}}
-          <button class="add-favorite associated-div-{{item.id}}">Favorite</button>
+          <button class='add-favorite'
+            data-unique_name={{item.unique_name}}
+            data-name={{item.name}}
+            data-image={{item.image}}
+            data-amount={{item.amount}}
+            data-symbol={{item.symbol}}
+          >Favorite</button>
       </div>
     {{/each}}
   </div>

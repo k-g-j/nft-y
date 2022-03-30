@@ -1,143 +1,151 @@
-// TODO: FOR USER TO UPDATE THEIR PASSWORD, { individualHooks: true, } needs to be declared under Users.update declarations for bcrypt to work.
+const router = require('express').Router()
+const { Users, NFT, Projects } = require('../../models')
 
-// TODO: add routes for getting users, creating a user, loging in a user, logging out a user, deleting a user
-
-// NOTE: refer to module 14 and remember to use req.session.save() and req.session.destroy()
-
-const router = require('express').Router();
-const { Users, NFT, Projects } = require('../../models');
-
+// get all users
 router.get('/', (req, res) => {
   Users.findAll({
     attributes: { exclude: ['password'] },
-  }).then(UserData => res.json(UserData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+  })
+    .then((UserData) => res.json(UserData))
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json(err)
+    })
 })
 
+// get a single user
 router.get('/:id', (req, res) => {
   Users.findOne({
     attributes: { exclude: ['password'] },
     where: {
-      id: req.params.id
+      id: req.params.id,
     },
     include: [
       {
         model: NFT,
-        attributes: ['id', 'name', 'imageurl', 'addrs', 'description'],
-        include: {
-          model: Projects,
-          attributes: ['name']
-        }
+        attributes: [
+          'id',
+          'name',
+          'unique_name',
+          'image',
+          'description',
+          'users_name',
+        ]
       },
-    ]
+    ],
   })
-    .then(UserData => {
+    .then((UserData) => {
       if (!UserData) {
-        res.status(404).json({ message: 'No user found with this id' });
-        return;
+        res.status(404).json({ message: 'No user found with this id' })
+        return
       }
-      res.json(UserData);
+      res.json(UserData)
     })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json(err)
+    })
+})
 
+// create a new user
 router.post('/', (req, res) => {
   Users.create({
     username: req.body.username,
     email: req.body.email,
     password: req.body.password,
-    wallet: req.body.wallet
+    wallet: req.body.wallet,
   })
-    .then(UserData => res.json(UserData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
+    .then((dbUserData) => {
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id
+        req.session.username = dbUserData.username
+        req.session.email = dbUserData.email
+        req.session.wallet = dbUserData.wallet
+        req.session.loggedIn = true
+        res.json({ message: 'success', data: dbUserData })
+      })
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json(err)
+    })
+})
 
+// login a user
 router.post('/login', (req, res) => {
   Users.findOne({
-    where: {
-      email: req.body.email
+    where: { email: req.body.email },
+  }).then((dbUserData) => {
+    if (!dbUserData) {
+      res.status(400).json({
+        message: 'No user with that email address!',
+      })
+      return
     }
-  })
-  .then(UserData => {
-    if (!UserData) {
-      res.status(400).json({ message: 'Invalid email address!' });
-      return;
-    }
-    const validPassword = UserData.checkPassword(req.body.password);
-
+    const validPassword = dbUserData.checkPassword(req.body.password)
     if (!validPassword) {
-      res.status(400).json({ message: 'Wrong password' });
-      return;
+      res.status(400).json({ message: 'Incorrect password!' })
+      return
     }
-
     req.session.save(() => {
-      req.session.user_id = UserData.id;
-      req.session.username = UserData.username;
-      req.session.loggedIn = true;
+      req.session.user_id = dbUserData.id
+      req.session.username = dbUserData.username
+      req.session.email = dbUserData.email
+      req.session.wallet = dbUserData.wallet
+      req.session.loggedIn = true
+      res.json({ user: dbUserData, message: 'You are now logged in!' })
+    })
+  })
+})
 
-    res.json({ user: UserData, message: 'Logged in!' });
-  });
-});
-});
-
-//Need a log out!
+// logout a user
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
-      res.status(204).end();
-    });
+      res.status(204).end()
+    })
+  } else {
+    res.status(404).end()
   }
-  else {
-    res.status(404).end();
-  }
-});
+})
 
 router.put('/:id', (req, res) => {
   Users.update(req.body, {
     individualHooks: true,
     where: {
-      id: req.params.id
-    }
+      id: req.params.id,
+    },
   })
-  .then(UserData => {
-    if (!UserData[0]) {
-      res.status(404).json({ message: 'Invalid user!' });
-      return;
-    }
-    res.json(UserData);
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
-});
+    .then((dbUserData) => {
+      if (!dbUserData[0]) {
+        res.status(404).json({ message: 'Invalid user!' })
+        return
+      }
+      res.json(dbUserData)
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json(err)
+    })
+})
 
 router.delete('/:id', (req, res) => {
   Users.destroy({
     where: {
-      id: req.params.id
-    }
+      id: req.params.id,
+    },
   })
-  .then(UserData => {
-    if (!UserData) {
-      res.status(404).json({ message: 'Invalid User!' });
-      return;
-    }
-    res.json(UserData);
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
-});
+    .then((dbUserData) => {
+      if (!dbUserData) {
+        res.status(404).json({ message: 'Invalid User!' })
+        return
+      }
+      res.json(dbUserData)
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json(err)
+    })
+})
 
 module.exports = router
