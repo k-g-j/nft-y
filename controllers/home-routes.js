@@ -1,11 +1,10 @@
 const router = require('express').Router()
 const Moralis = require('moralis/node')
 const { Projects } = require('../models')
+const checkAuth = require('../utils/auth')
 require('dotenv').config()
 const serverUrl = process.env.serverUrl
 const appId = process.env.appId
-
-console.log(Projects)
 
 // homepage
 router.get('/', async (req, res) => {
@@ -55,7 +54,7 @@ router.get('/about', async (req, res) => {
 })
 
 // show the chat page
-router.get('/chat', async (req, res) => {
+router.get('/chat', checkAuth, async (req, res) => {
   try {
     res.render('chat-home')
   } catch (err) {
@@ -63,7 +62,7 @@ router.get('/chat', async (req, res) => {
     res.status(500).json({ error: err })
   }
 })
-router.get('/chat.handlebars', async (req, res) => {
+router.get('/chat.handlebars', checkAuth, async (req, res) => {
   try {
     res.render('chat')
   } catch (err) {

@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Users, NFT, Projects } = require('../../models')
+const { Users, NFT } = require('../../models')
 
 // get all users
 router.get('/', (req, res) => {

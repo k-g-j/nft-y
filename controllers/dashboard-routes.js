@@ -43,7 +43,7 @@ router.get('/', checkAuth, async (req, res) => {
 })
 
 // if a user has sent their wallet address when registering this will return their personal NFTs
-router.post('/usernfts', async (req, res) => {
+router.post('/usernfts', checkAuth, async (req, res) => {
   const options = {
     chain: 'eth',
     address: req.body.userWallet,

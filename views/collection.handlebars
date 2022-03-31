@@ -1,7 +1,8 @@
 <div class="container">
   <div class="nft-row">
     {{#each NFTcollection as |item|}}
-      <div class="nft-div associated-item-{{item.id}}">
+      <div class="nft-div">
+        <p id="error-alert"></p>
         {{>NFTitem item}}
           <button class='add-favorite'
             data-unique_name={{item.unique_name}}

@@ -1,8 +1,9 @@
  <div id="dashboard-header">
+   {{#if user_wallet}}
     <h2 class="card card-header container" id="your-nfts-header">Your NFTS</h2>
     <p id="user-wallet-address" data-walletaddress={{user_wallet}} class='d-hidden'></p>
     <div id="user-nfts"></div>
-    <div class="card card-header container" id="no-wallet-header"></div>
+    {{/if}}
   </div>
   {{#if nft_faves.length}}
 <section>
@@ -17,4 +18,6 @@
 </section>
 {{/if}}
 <script src="/javascript/removefavorite.js"></script>
+{{#if user_wallet}}
 <script src="/javascript/user-nfts.js"></script>
+{{/if}}
