@@ -1,7 +1,7 @@
 const searchInput = $('.search-bar')
 const searchForm = $('.search-form')
 const searchBtn = $('.search-btn')
-const imagesDiv = $('.images-container')
+const imagesDiv = $('.images-row')
 
 $(searchForm).submit(function (e) {
   e.preventDefault()
@@ -26,13 +26,16 @@ const handleSearch = async () => {
       $(nftImg).on('error', function () {
         $(this).attr('src', '')
       })
-      imagesDiv[0].appendChild(nftImg)
+      let searchDiv = document.createElement('div')
+      $(searchDiv).addClass('col-sm');
+      imagesDiv[0].appendChild(searchDiv)
+      searchDiv.appendChild(nftImg)
       let nftName = document.createElement('h2')
       $(nftName).text(item.name)
-      imagesDiv[0].appendChild(nftName)
+      searchDiv.appendChild(nftName)
       let nftDescription = document.createElement('p')
       $(nftDescription).text(item.description)
-      imagesDiv[0].appendChild(nftDescription)
+      searchDiv.appendChild(nftDescription)
       let favoriteBtn = document.createElement('button')
       $(favoriteBtn).text('favorite')
       $(favoriteBtn).click(async function (e) {
@@ -51,18 +54,21 @@ const handleSearch = async () => {
           console.log(err)
         }
       })
-      imagesDiv[0].appendChild(favoriteBtn)
+      searchDiv.appendChild(favoriteBtn)
     } else if (item.image_url) {
+      let searchDiv = document.createElement('div')
+      $(searchDiv).addClass('col-sm');
+      imagesDiv[0].appendChild(searchDiv)
       item.img_src = item.image_url
       let nftImg = document.createElement('img')
       $(nftImg).attr('src', item.img_src)
-      imagesDiv[0].appendChild(nftImg)
+      searchDiv.appendChild(nftImg)
       let nftName = document.createElement('h2')
       $(nftName).text(item.name)
-      imagesDiv[0].appendChild(nftName)
+      searchDiv.appendChild(nftName)
       let nftDescription = document.createElement('p')
       $(nftDescription).text(item.description)
-      imagesDiv[0].appendChild(nftDescription)
+      searchDiv.appendChild(nftDescription)
       let favoriteBtn = document.createElement('button')
       $(favoriteBtn).text('favorite')
       $(favoriteBtn).click(async function (e) {
@@ -82,7 +88,7 @@ const handleSearch = async () => {
           console.log(err)
         }
       })
-      imagesDiv[0].appendChild(favoriteBtn)
+      searchDiv.appendChild(favoriteBtn)
     } else {
       item.img_src = null
     }

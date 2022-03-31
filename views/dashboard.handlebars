@@ -1,21 +1,23 @@
  <div id="dashboard-header">
    {{#if user_wallet}}
-    <h2 class="card card-header container" id="your-nfts-header">Your NFTS</h2>
-    <p id="user-wallet-address" data-walletaddress={{user_wallet}} class='d-hidden'></p>
-    <div id="user-nfts"></div>
+   <div class="container">
+     <h2 class="card card-header container" id="your-nfts-header">Your NFTS</h2>
+        <p id="user-wallet-address" data-walletaddress={{user_wallet}} class='d-hidden'></p>
+     <div class="row" id="user-nfts"></div>
+   </div>
     {{/if}}
   </div>
   {{#if nft_faves.length}}
-<section>
-  <div class="nft-row">
+<div class="container">
+  <div class="row nft-row">
     {{#each nft_faves as |item|}}
-    <div class="nft-div">
+    <div class="col-lg-4 col-md-6 justify-center">
       {{> NFTitem item}}
         <button class="remove-favorite btn" data-id={{item.id}}>Remove</button>
     </div>
     {{/each}}
     </div>
-</section>
+</div>
 {{/if}}
 <script src="/javascript/removefavorite.js"></script>
 {{#if user_wallet}}
