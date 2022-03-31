@@ -1,6 +1,6 @@
-const seedProjects = require('./projects-seeds');
+const seedProjects = require('./project-seeds');
 const seedUsers = require('./user-seeds');
-const seedNFT = require('./nft-seeds');
+const seedNFTs = require('./nft-seeds');
 
 const sequelize = require('../config/connection');
 
@@ -14,7 +14,7 @@ const seedAll = async () => {
   await seedUsers();
   console.log('\n----- USERS SEEDED -----\n');
 
-  await seedNFT();
+  await seedNFTs();
   console.log('\n----- NFTs SEEDED -----\n');
 
   process.exit(0);

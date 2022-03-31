@@ -7,7 +7,13 @@
     {{/if}}
     <div class='container'>
       {{#if image}}
-        <img class='image' src='{{image}}' width='25%' alt='{{name}}' />
+        <img
+          class='image'
+          src='{{image}}'
+          width='25%'
+          alt='{{name}}'
+          onerror="this.onerror=null;this.src=''"
+        />
       {{else}}
         <img
           class='image-stand-in'
@@ -16,7 +22,9 @@
           alt='{{name}}'
         />
       {{/if}}
-      <span><p class='amount'>{{amount}}</p><p class='symbol'>{{symbol}}</p></span>
+      <span><p class='amount'>{{amount}}</p><p
+          class='symbol'
+        >{{symbol}}</p></span>
     </div>
   </div>
 </div>

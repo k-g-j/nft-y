@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const Moralis = require('moralis/node')
-const { popularNFTs } = require('../src/collections')
-const { Projects } = require('../models/Projects')
+const { Projects } = require('../models')
+const checkAuth = require('../utils/auth')
 require('dotenv').config()
 const serverUrl = process.env.serverUrl
 const appId = process.env.appId
@@ -9,9 +9,9 @@ const appId = process.env.appId
 // homepage
 router.get('/', async (req, res) => {
   try {
-    // TODO: adjust after db seeded
-    // these should go into the database to seed
-    res.render('homepage', { popularNFTs })
+    const dbProjectsData = await Projects.findAll()
+    const popularNFTs = dbProjectsData.map((project) => project.get({ plain: true }))
+    res.render('homepage', { popularNFTs , loggedIn: req.session.loggedIn })
   } catch (err) {
     res.status(500).json({ error: err })
   }
@@ -19,21 +19,14 @@ router.get('/', async (req, res) => {
 
 // get individual collection route
 router.get('/nft/collection/:name', async (req, res) => {
-  // TODO: adjust after db seeded
   try {
-    // once db has the projects will use this code
-    // const dbNFTproject = await Projects.findOne(
-    //   {
-    //     where: { name: req.params.name },
-    //     attributes: ['addrs']
-    //   })
-    const collection = popularNFTs.find(nft => nft.name === req.params.name)
+    const project = await Projects.findOne({ where: { name: req.params.name } })
     await Moralis.start({ serverUrl, appId })
-    const id = 0
     const NFTs = await Moralis.Web3API.token.getAllTokenIds({
-      address: collection.addrs, chain: 'eth', limit: 30
+      address: project.addrs, chain: 'eth', limit: 30
     })
     let NFTcollection = NFTs.result
+    // const id = 0
     for (const item of NFTcollection) {
       let metadata = JSON.parse(item['metadata'])
       let image = metadata['image'] ? metadata['image'] : false
@@ -46,10 +39,10 @@ router.get('/nft/collection/:name', async (req, res) => {
       }
       let unique_name = metadata['name'] ? metadata['name'] : false
       item.unique_name = unique_name
-      id++;
-      item.id = id
+      // id++;
+      // item.id = id
     }
-    res.render('collection', { NFTcollection })
+    res.render('collection', { NFTcollection, loggedIn: req.session.loggedIn })
   } catch (err) {
     res.status(500).json({ error: err })
   }
@@ -61,17 +54,17 @@ router.get('/about', async (req, res) => {
 })
 
 // show the chat page
-router.get('/chat', async (req, res) => {
+router.get('/chat', checkAuth, async (req, res) => {
   try {
-    res.render('chat-home')
+    res.render('chat-home', { loggedIn: req.session.loggedIn })
   } catch (err) {
     console.log(err)
     res.status(500).json({ error: err })
   }
 })
-router.get('/chat.handlebars', async (req, res) => {
+router.get('/chat.handlebars', checkAuth, async (req, res) => {
   try {
-    res.render('chat')
+    res.render('chat', { loggedIn: req.session.loggedIn })
   } catch (err) {
     console.log(err)
     res.status(500).json({ error: err })

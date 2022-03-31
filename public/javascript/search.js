@@ -23,6 +23,9 @@ const handleSearch = async () => {
       item.img_src = item.image
       let nftImg = document.createElement('img')
       $(nftImg).attr('src', item.img_src)
+      $(nftImg).on('error', function () {
+        $(this).attr('src', '')
+      })
       imagesDiv[0].appendChild(nftImg)
       let nftName = document.createElement('h2')
       $(nftName).text(item.name)
@@ -36,16 +39,15 @@ const handleSearch = async () => {
         console.log({
           name: item.name,
           image: item.image,
-          description: item.description
+          description: item.description,
         })
         try {
-          const { data } = await axios.post('/nft/favorite', {
+          const response = await axios.post('api/nft', {
             name: item.name,
-            imageurl: item.image,
+            image: item.image,
             description: item.description,
           })
         } catch (err) {
-          alert(err)
           console.log(err)
         }
       })
@@ -66,18 +68,17 @@ const handleSearch = async () => {
       $(favoriteBtn).click(async function (e) {
         e.preventDefault()
         try {
-        console.log({
+          console.log({
             name: item.name,
             image: item.image_url,
-            description: item.description
+            description: item.description,
           })
-          const { data } = await axios.post('/nft/favorite', {
+          const response = await axios.post('api/nft', {
             name: item.name,
-            imageurl: item.image_url,
+            image: item.image_url,
             description: item.description,
           })
         } catch (err) {
-          alert(err)
           console.log(err)
         }
       })

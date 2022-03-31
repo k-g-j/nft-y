@@ -1,8 +1,6 @@
 const router = require('express').Router()
 const Moralis = require('moralis/node')
-const fixURL = require('../utils/fixURL')
-const axios = require('axios')
-const { NFT, User } = require('../models')
+const { NFT, Users } = require('../models')
 const checkAuth = require('../utils/auth')
 require('dotenv').config()
 const serverUrl = process.env.serverUrl
@@ -24,10 +22,9 @@ router.get('/', checkAuth, async (req, res) => {
         'description',
         'users_name',
       ],
-      order: [['created_at', 'DESC']],
       include: [
         {
-          model: User,
+          model: Users,
           attributes: ['username', 'email', 'wallet'],
         },
       ],
@@ -35,6 +32,7 @@ router.get('/', checkAuth, async (req, res) => {
     const nft_faves = dbNFTData.map((nft) => nft.get({ plain: true }))
     res.render('dashboard', {
       nft_faves,
+      user_wallet: req.session.wallet,
       user_id: req.session.user_id,
       loggedIn: true,
     })
@@ -45,7 +43,7 @@ router.get('/', checkAuth, async (req, res) => {
 })
 
 // if a user has sent their wallet address when registering this will return their personal NFTs
-router.post('/usernfts', async (req, res) => {
+router.post('/usernfts', checkAuth, async (req, res) => {
   const options = {
     chain: 'eth',
     address: req.body.userWallet,

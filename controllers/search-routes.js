@@ -5,7 +5,7 @@ const serverUrl = process.env.serverUrl
 const appId = process.env.appId
 
 router.get('/', (req, res) => {
-  res.render('search')
+  res.render('search', { loggedIn: req.session.loggedIn })
 })
 
 // search results
@@ -53,7 +53,7 @@ router.post('/nft', async (req, res) => {
       }
       nfts.push(nft)
     }
-    res.json({ NFTS: nfts })
+    res.json({ NFTS: nfts, loggedIn: req.session.loggedIn})
   } catch (err) {
     res.status(500).json({ error: err })
   }

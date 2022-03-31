@@ -1,4 +1,3 @@
-const { TimestreamQuery } = require('aws-sdk');
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 

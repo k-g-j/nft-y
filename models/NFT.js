@@ -15,13 +15,13 @@ NFT.init(
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true
+            unique: false
         },
 
         unique_name: {
             type: DataTypes.STRING,
             allowNull: true,
-            unique: true
+            unique: false
         },
 
         image: {
@@ -38,7 +38,7 @@ NFT.init(
         },
 
         users_name: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false,
             references: {
                 model: 'users',
