@@ -73,3 +73,8 @@ body {
    max-width:250px;
    display: inline-block;
 }
+.loginpage {
+  text-align: center; 
+  display: flex;  
+  flex-wrap: wrap;
+}
