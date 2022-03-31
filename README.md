@@ -43,7 +43,7 @@
   Email:<br />
   • Kate Johnson: johnson.kat.g@gmail.com<br />
   • Cesar Siguencia: cesar.siguencia@gmail.com<br />
-  • Athanasia Kotopoulos:<br />
+  • Athanasia Kotopoulos: athanasiakotopoulos@gmail.com<br />
   • Lavon Green: lavonj.green@gmail.com<br />
   • Jiyeon You: zhdzhddlx@gmail.com<br />
   
