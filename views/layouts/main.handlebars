@@ -4,35 +4,83 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.1/axios.min.js"></script>
-  <script src="/javascript/loadingerror.js"></script>
-  <title>NFT-Y</title>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <title>NFT-y</title>
 </head>
   <body>
     <div class='wrapper'>
       <header>
-        <nav class='nav'>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href='/' class="page-title card-header container mt-5">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href='/about' class='btn-no-style btn card w-10 m-1 mt-3 mr-2'>About</a>
+        </li>
+                <li class="nav-item">
+          <a class="nav-link" href="/search" id="main-dashboard" class="btn card w-10 m-1 mt-3 mr-2">Search</a>
+        </li>
+        {{!-- {{#if loggedIn}} --}}
+        <li class="nav-item">
+          <a class="nav-link" href='/dashboard' id="main-dashboard" class="btn card w-10 m-1 mt-3 mr-2">Dashboard</a>
+        </li>
+                <li class="nav-item">
+          <a class="nav-link" href='/login' class='btn-no-style btn card w-10 m-1 mt-3 mr-2'>Login</a>
+     </li>
+      </ul>
+   
+</div>
+</div>
+</div>
+</div>
+</div>
+</nav>
+<!-- Navbar -->
+
+        {{!-- <nav class='nav'>
           <a id="logo" href='/' class="page-title card-header container mt-5"><span>Home</span></a>
           <a id='about-btn' href='/about' class='btn-no-style btn card w-10 m-1 mt-3 mr-2'>About</a>
           {{#if loggedIn}}
-            <a href="/search" type="button" class="btn">Search</a>
             <a href='/dashboard' id="main-dashboard" class="btn card w-10 m-1 mt-3 mr-2">Dashboard</a>
-            <a href='/chat'>NFTY-CHORD</a>
             <button id='logout' class='btn-no-style btn card w-10 m-1 mt-3 mr-2'>Logout</button>
           {{else}}
             <a  id="login" class="btn card w-10 m-1 mt-3 mr-2" href='/login'>Login</a>
           {{/if}}
-        </nav>
+        </nav> --}}
       </header>
       <main>
         {{{body}}}
       </main>
       <footer class="container">
-        <h3>FOOTER</h3>
+        <h3>©2022 NFT-y Inc. All Rights Reserved.</h3>
       </footer>
     </div>
-    {{#if loggedIn}}
-      <script src='/javascript/logout.js'></script>
-    {{/if}}
+    
+   
+    </body>
 </html>
