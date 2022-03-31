@@ -67,3 +67,9 @@ body {
     background: green;
   }
   
+  #loginform
+{
+   width:250px; 
+   max-width:250px;
+   display: inline-block;
+}
