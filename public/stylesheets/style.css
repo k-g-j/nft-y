@@ -1,5 +1,7 @@
 style.css
 
+style.css
+
 body {
     margin: 0;
     display: flex;
@@ -67,3 +69,14 @@ body {
     background: green;
   }
   
+  #loginform
+{
+   width:250px; 
+   max-width:250px;
+   display: inline-block;
+}
+.loginpage {
+  text-align: center; 
+  display: flex;  
+  flex-wrap: wrap;
+}
