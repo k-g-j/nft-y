@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
   try {
     const dbProjectsData = await Projects.findAll()
     const popularNFTs = dbProjectsData.map((project) => project.get({ plain: true }))
-    res.render('homepage', { popularNFTs })
+    res.render('homepage', { popularNFTs , loggedIn: req.session.loggedIn })
   } catch (err) {
     res.status(500).json({ error: err })
   }
@@ -42,7 +42,7 @@ router.get('/nft/collection/:name', async (req, res) => {
       // id++;
       // item.id = id
     }
-    res.render('collection', { NFTcollection })
+    res.render('collection', { NFTcollection, loggedIn: req.session.loggedIn })
   } catch (err) {
     res.status(500).json({ error: err })
   }
@@ -56,7 +56,7 @@ router.get('/about', async (req, res) => {
 // show the chat page
 router.get('/chat', checkAuth, async (req, res) => {
   try {
-    res.render('chat-home')
+    res.render('chat-home', { loggedIn: req.session.loggedIn })
   } catch (err) {
     console.log(err)
     res.status(500).json({ error: err })
@@ -64,7 +64,7 @@ router.get('/chat', checkAuth, async (req, res) => {
 })
 router.get('/chat.handlebars', checkAuth, async (req, res) => {
   try {
-    res.render('chat')
+    res.render('chat', { loggedIn: req.session.loggedIn })
   } catch (err) {
     console.log(err)
     res.status(500).json({ error: err })

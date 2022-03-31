@@ -17,7 +17,7 @@ async function loginFormHandler(event) {
     if (response.ok) {
       document.location.replace('/dashboard/')
     } else {
-      alert(response.statusText)
+      $('error-message').textContent = 'please check your email and password'
     }
   }
 }
@@ -45,7 +45,7 @@ async function signupFormHandler(event) {
     if (response.ok) {
       document.location.replace('/dashboard/')
     } else {
-      alert(response.statusText)
+      $('error-message').textContent = 'please check your email and password and try again'
     }
   }
 }

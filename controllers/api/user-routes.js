@@ -62,7 +62,7 @@ router.post('/', (req, res) => {
         req.session.email = dbUserData.email
         req.session.wallet = dbUserData.wallet
         req.session.loggedIn = true
-        res.json({ message: 'success', data: dbUserData })
+        res.json({ message: 'success'})
       })
     })
     .catch((err) => {

@@ -42,13 +42,12 @@ const handleSearch = async () => {
           description: item.description,
         })
         try {
-          const { data } = await axios.post('/nft/favorite', {
+          const response = await axios.post('api/nft', {
             name: item.name,
-            imageurl: item.image,
+            image: item.image,
             description: item.description,
           })
         } catch (err) {
-          alert(err)
           console.log(err)
         }
       })
@@ -74,13 +73,12 @@ const handleSearch = async () => {
             image: item.image_url,
             description: item.description,
           })
-          const { data } = await axios.post('/nft/favorite', {
+          const response = await axios.post('api/nft', {
             name: item.name,
-            imageurl: item.image_url,
+            image: item.image_url,
             description: item.description,
           })
         } catch (err) {
-          alert(err)
           console.log(err)
         }
       })
