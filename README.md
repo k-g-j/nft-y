@@ -3,7 +3,8 @@
   
   ## Description 
   
-  through nft-y application, it provides you popular NFTs information, search function for NFTs, personal favorite NFTs gallery and chatting room for NFT users.
+  A NFT-Y NFT GALLERY
+  The app provides you popular NFTs information, search function for NFTs, personal favorite NFTs gallery and chatting room for NFT users.
   
   ## Table of Contents
   * [Installation](#installation)
@@ -14,14 +15,22 @@
 
   ## Installation
   
-  install dependencies and run app.
+  1. install dependencies
+  2. follow instructions in SET-UP.txt
+  3. run app
   
   ## Usage 
   
-  when you want to get popular NFTs list and make your NFT gallery.
+  when you want to get popular NFTs list, see your collection, make your NFT gallery, chat with other users.
   
   ## Screenshots
   
+<img width="1222" alt="nfty-homepage" src="https://user-images.githubusercontent.com/91970214/161169159-4f25bfa7-09d0-4ac5-afe4-43f0c0975ed9.png">
+
+<img width="1023" alt="nfty-dashboard" src="https://user-images.githubusercontent.com/91970214/161169178-bbbff31a-3f55-4f7b-90c2-1895b3a3baa8.png">
+
+<img width="1443" alt="nfty-chord" src="https://user-images.githubusercontent.com/91970214/161169190-7cf9b373-2f41-4284-808b-36f714256ff2.png">
+
     
   ## License
     
