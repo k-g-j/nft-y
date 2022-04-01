@@ -3,6 +3,8 @@
   
   ## Description 
   
+  [APP](https://nft-y.herokuapp.com/)
+  
   A NFT-Y NFT GALLERY
   The app provides you popular NFTs information, search function for NFTs, personal favorite NFTs gallery and chatting room for NFT users.
   
