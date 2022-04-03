@@ -1,0 +1,29 @@
+1. create and .env file
+2. inside the .env file place
+
+serverUrl = 'your Moralis server url'
+appId = 'your Moralis server appId'
+
+SESSION_SECRET = 'random string of characters and numbers'
+
+DB_NAME = 'nft_galleries'
+DB_USER = 'your mysql username'
+DB_PW = 'your mysql password'
+
+3. in terminal open mysql shell and run "source db/schema.sql" then "quit" to exit out of shell
+4. in terminal "npm run seed"
+5. in terminal "nodemon start" or "npm start"
+
+      Dummy users
+
+  username: 'NFT guy'
+  email: 'nftguy@email.com'
+  password: 'password'
+
+  username: 'NFT dude'
+  email: 'nftdude@email.com'
+  password: 'password'
+
+  username: 'NFTina'
+  email: 'nftina@email.com'
+  password: 'password'

@@ -1,3 +1,102 @@
-.d-hidden {
+style.css style.css body {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000;
+  color: #221e21;
+}
+:root {
+	--dark-color-a: #1b0e17;
+	--dark-color-b: #221e21;
+	--light-color: #e6e9ff;
+	--success-color: #5cb85c;
+	--error-color: #d9534f;
+}
+main {
+  display: flex;
+  flex-direction: row;
+  color: #221e21;
+}
+
+ul {
+  color: #221e21;
+}
+
+#wrapper {
+  width: 100%;
+  max-width: 964px;
+  position: relative;
+}
+
+#carousel {
+  overflow: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+#carousel::-webkit-scrollbar {
+  height: 0;
+}
+
+#prev,
+#next {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background: white;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  position: absolute;
+}
+
+#prev {
+  top: 50%;
+  left: 0;
+  transform: translate(50%, -50%);
   display: none;
+}
+
+#next {
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+}
+
+#content {
+  display: grid;
+  grid-gap: 16px;
+  grid-auto-flow: column;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+.item {
+  width: 180px;
+  height: 180px;
+  background: green;
+}
+
+#loginform {
+  width: 250px;
+  max-width: 250px;
+  display: inline-block;
+}
+.loginpage {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dashboard-div {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100%;
 }

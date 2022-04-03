@@ -1,7 +1,13 @@
+<div class="loginpage">
+  <div style="width:900px; margin:0 auto; text-align: center; display: flex;  
+  flex-wrap: wrap;">
+
+
+
 <div class="container">
-  <div class="nft-row">
+  <div class="row nft-row">
     {{#each NFTcollection as |item|}}
-      <div class="nft-div associated-item-{{item.id}}">
+      <div class="col-lg-4 col-md-6">
         {{>NFTitem item}}
           <button class='add-favorite'
             data-unique_name={{item.unique_name}}

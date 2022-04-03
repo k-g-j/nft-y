@@ -1,16 +1,16 @@
-<div class='nft-card'>
-  <div class='card-body'>
+<div>
+  <div>
     {{#if unique_name}}
       <h5 class='unique_name'>{{unique_name}}</h5>
     {{else}}
       <h5 class='name'>{{name}}</h5>
     {{/if}}
-    <div class='container'>
+    <div>
       {{#if image}}
         <img
           class='image'
           src='{{image}}'
-          width='25%'
+          width='100%'
           alt='{{name}}'
           onerror="this.onerror=null;this.src=''"
         />
@@ -18,7 +18,7 @@
         <img
           class='image-stand-in'
           src='https://www.clubscikidzmd.com/wp-content/uploads/2020/11/coming-soon-neon-sign-coming-soon-badge-in-vector-21133321.jpg'
-          width='25%'
+          width='100%'
           alt='{{name}}'
         />
       {{/if}}

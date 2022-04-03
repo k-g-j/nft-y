@@ -1,16 +1,18 @@
-<div class="container">
-  <a href="/search" type="button" class="btn">Search</a>
-</div>
-<div class="container">
+<div class='container'>
+   <div class='row'>
   {{#each popularNFTs as |collection|}}
-    <div class="row">
-        <div class="col-md-12">
-            <h1>{{collection.name}}</h1>
-            <a href="/nft/collection/{{collection.name}}">
-              <img src="{{collection.image}}" width="25%" alt="nft collection cover"/>
-            </a>
-            <p>{{collection.address}}</p>
-        </div>
-    </div>
-    {{/each}}
+      <div class='col-sm-4'>
+        {{collection.name}}
+        <br>
+        <a href='/nft/collection/{{collection.name}}'>
+          <img
+            src='{{collection.image}}'
+            width='50%',
+            alt='nft collection cover'
+          />
+        </a>
+        <p>{{collection.address}}</p>
+      </div>
+  {{/each}}
+  </div>
 </div>

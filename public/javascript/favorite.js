@@ -12,5 +12,8 @@ $('.nft-row').on('click', '.add-favorite', async (e) => {
     image: nftImage,
     description: nftDescription,
   })
+  if (faveAdded.data.error) {
+    $('.error-alert').text("Please log-in first!")
+  }
   console.log(faveAdded)
 })
